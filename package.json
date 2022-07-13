@@ -1,0 +1,13 @@
+{
+  "name": "@keix/blocks",
+  "version": "0.0.1",
+  "scripts": {
+    "build": "tsc"
+  },
+  "main": "dist/module.js",
+  "typings": "dist/module.js",
+  "devDependencies": {
+    "@keix/workflow-types": "^1.0.0",
+    "@types/react": "^18.0.15"
+  }
+}
