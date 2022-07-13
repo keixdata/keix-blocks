@@ -1,6 +1,6 @@
 import { LibraryBlock } from "@keix/workflow-types";
 
-const blocks: LibraryBlock[] = [
+export const blocks: LibraryBlock[] = [
   {
     name: "input",
     uri: "keix.input",
@@ -64,5 +64,3 @@ const blocks: LibraryBlock[] = [
     },
   },
 ];
-
-export default blocks;

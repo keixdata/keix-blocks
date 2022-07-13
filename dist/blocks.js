@@ -1,4 +1,4 @@
-const blocks = [
+export const blocks = [
     {
         name: "input",
         uri: "keix.input",
@@ -62,4 +62,3 @@ const blocks = [
         },
     },
 ];
-export default blocks;
