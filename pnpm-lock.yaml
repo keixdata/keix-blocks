@@ -1,17 +1,17 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@keix/workflow-types': ^1.0.0
+  '@keix/workflow-types': ^1.0.1
   '@types/react': ^18.0.15
 
 devDependencies:
-  '@keix/workflow-types': 1.0.0
+  '@keix/workflow-types': 1.0.1
   '@types/react': 18.0.15
 
 packages:
 
-  /@keix/workflow-types/1.0.0:
-    resolution: {integrity: sha512-NPXbh87JGOSnM6Zl/8UpnAFj+vHHgN12xi+1XRzRNgMu1FfEH1vCpfjGapZGr69P/q/SbWwxHEG3gd8XwXReNg==}
+  /@keix/workflow-types/1.0.1:
+    resolution: {integrity: sha512-/aUJsQYO9pD0hRHn1Zq/psdP6+j+YtkJZYIJe93u55J549J8MhWLiTHwBdmLawLbgw9AOpNg/v7P8Vh9SIgXtQ==}
     peerDependencies:
       react: ^18.2.0
     dev: true

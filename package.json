@@ -7,7 +7,7 @@
   "main": "dist/module.js",
   "typings": "dist/module.js",
   "devDependencies": {
-    "@keix/workflow-types": "^1.0.0",
+    "@keix/workflow-types": "^1.0.1",
     "@types/react": "^18.0.15"
   }
 }
