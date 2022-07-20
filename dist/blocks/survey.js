@@ -1,17 +1,15 @@
-import { LibraryBlock } from "@keix/workflow-types";
-
-export const library: LibraryBlock[] = [
-  {
-    name: "load_survey",
-    uri: "keix.load_survey",
-    arguments: [
-      {
-        name: "in",
-        type: "python.string",
-        isPort: false,
-      },
-    ],
-    code: `
+export const library = [
+    {
+        name: "load_survey",
+        uri: "keix.load_survey",
+        arguments: [
+            {
+                name: "in",
+                type: "python.string",
+                isPort: false,
+            },
+        ],
+        code: `
 import json
 import js
 import pandas as pd
@@ -35,16 +33,15 @@ async def load_survey(_in):
     text = StringIO(response_data.data.dumpSurveyData)
     return pd.read_csv(text)
     `,
-    returnType: "pandas.dataframe",
-    async: true,
-    style: {
-      icon: "form",
-      bg: {
-        color: "blue",
-        opacity: 500,
-      },
+        returnType: "pandas.dataframe",
+        async: true,
+        style: {
+            icon: "form",
+            bg: {
+                color: "blue",
+                opacity: 500,
+            },
+        },
     },
-  },
 ];
-
 export default library;
