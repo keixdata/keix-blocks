@@ -2,7 +2,7 @@ import { LibraryBlock } from "@keix/workflow-types";
 
 const zeroLike = ["empty", "ones", "zeros"];
 
-const library: LibraryBlock[] = [
+export const library: LibraryBlock[] = [
   ...zeroLike.map<LibraryBlock>((name) => ({
     name: name,
     uri: `numpy.${name}`,

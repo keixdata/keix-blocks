@@ -1,6 +1,6 @@
 import { LibraryBlock } from "@keix/workflow-types";
 
-const library: LibraryBlock[] = [
+export const library: LibraryBlock[] = [
   {
     name: "load_dump",
     style: {

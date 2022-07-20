@@ -1,4 +1,4 @@
-const library = [
+export const library = [
     {
         name: "load_dump",
         style: {

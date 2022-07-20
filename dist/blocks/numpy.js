@@ -1,5 +1,5 @@
 const zeroLike = ["empty", "ones", "zeros"];
-const library = [
+export const library = [
     ...zeroLike.map((name) => ({
         name: name,
         uri: `numpy.${name}`,
