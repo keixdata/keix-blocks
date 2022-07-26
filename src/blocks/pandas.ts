@@ -710,34 +710,51 @@ export const library: LibraryBlock[] = [
     },
     uri: "pandas.read_excel",
     arguments: [
-      { name: "io", type: "_empty", defaultValue: "_empty" },
-      { name: "sheet_name", type: "_empty", defaultValue: 0 },
-      { name: "header", type: "_empty", defaultValue: 0 },
-      { name: "names", type: "_empty", defaultValue: null },
-      { name: "index_col", type: "_empty", defaultValue: null },
-      { name: "usecols", type: "_empty", defaultValue: null },
-      { name: "squeeze", type: "_empty", defaultValue: false },
-      { name: "dtype", type: "_empty", defaultValue: null },
-      { name: "engine", type: "_empty", defaultValue: null },
-      { name: "converters", type: "_empty", defaultValue: null },
-      { name: "true_values", type: "_empty", defaultValue: null },
-      { name: "false_values", type: "_empty", defaultValue: null },
-      { name: "skiprows", type: "_empty", defaultValue: null },
-      { name: "nrows", type: "_empty", defaultValue: null },
-      { name: "na_values", type: "_empty", defaultValue: null },
-      { name: "keep_default_na", type: "_empty", defaultValue: true },
-      { name: "na_filter", type: "_empty", defaultValue: true },
-      { name: "verbose", type: "_empty", defaultValue: false },
-      { name: "parse_dates", type: "_empty", defaultValue: false },
-      { name: "date_parser", type: "_empty", defaultValue: null },
-      { name: "thousands", type: "_empty", defaultValue: null },
+      { name: "io", type: ["python.string"], defaultValue: null }, //TYPE PATH, BYTES, EXCEL FILE, FILE-LIKE OBJECT
+      {
+        name: "sheet_name",
+        type: ["python.string", "python.int", "python.string_array"],
+        defaultValue: 0,
+      },
+      {
+        name: "header",
+        type: ["python.int", "python.int_array"],
+        defaultValue: 0,
+      },
+      { name: "names", type: ["python.string_array"], defaultValue: null }, //TYPE ARRAY-LIKE
+      {
+        name: "index_col",
+        type: ["python.int", "python.int_array"],
+        defaultValue: null,
+      },
+      {
+        name: "usecols",
+        type: ["python.string", "python.int", "python.string_array"], //TYPE LIST-LIKE, CALLABLE
+        defaultValue: null,
+      },
+      { name: "squeeze", type: "bool", defaultValue: false },
+      { name: "dtype", type: "_empty", defaultValue: null }, //TYPE DTYPE
+      { name: "engine", type: "python.string", defaultValue: null },
+      { name: "converters", type: "_empty", defaultValue: null }, //TYPE DICT
+      { name: "true_values", type: "_empty", defaultValue: null }, //TYPE LIST
+      { name: "false_values", type: "_empty", defaultValue: null }, //TYPE LIST
+      { name: "skiprows", type: ["python.int"], defaultValue: null }, //TYPE LIST-LIKE, CALLABLE
+      { name: "nrows", type: "python.int", defaultValue: null },
+      { name: "na_values", type: ["python.string"], defaultValue: null }, //TYPE SCALAR, LIST-LIKE, DICT
+      { name: "keep_default_na", type: "bool", defaultValue: true },
+      { name: "na_filter", type: "bool", defaultValue: true },
+      { name: "verbose", type: "bool", defaultValue: false },
+      { name: "parse_dates", type: ["bool"], defaultValue: false }, //TYPE LIST-LIKE, DICT
+      { name: "date_parser", type: "_empty", defaultValue: null }, //TYPE FUNCTION
+      { name: "thousands", type: "python.string", defaultValue: null },
+      { name: "decimal", type: "python.string", defaultValue: "." },
       { name: "comment", type: "_empty", defaultValue: null },
-      { name: "skipfooter", type: "_empty", defaultValue: 0 },
-      { name: "convert_float", type: "_empty", defaultValue: true },
-      { name: "mangle_dupe_cols", type: "_empty", defaultValue: true },
+      { name: "skipfooter", type: "python.int", defaultValue: 0 },
+      { name: "convert_float", type: "bool", defaultValue: true },
+      { name: "mangle_dupe_cols", type: "bool", defaultValue: true },
       {
         name: "storage_options",
-        type: "typing.Optional[typing.Dict[str, typing.Any]]",
+        type: "_empty", //TYPE DICT
         defaultValue: null,
       },
     ],
@@ -751,12 +768,12 @@ export const library: LibraryBlock[] = [
     },
     uri: "pandas.read_feather",
     arguments: [
-      { name: "path", type: "_empty", defaultValue: "_empty" },
-      { name: "columns", type: "_empty", defaultValue: null },
+      { name: "path", type: ["python.string"], defaultValue: null }, //TYPE PATH, FILE-LIKE OBJECT
+      { name: "columns", type: "_empty", defaultValue: null }, //TYPE SEQUENCE
       { name: "use_threads", type: "bool", defaultValue: true },
       {
         name: "storage_options",
-        type: "typing.Optional[typing.Dict[str, typing.Any]]",
+        type: "_empty", //TYPE DICT
         defaultValue: null,
       },
     ],
@@ -772,13 +789,13 @@ export const library: LibraryBlock[] = [
     arguments: [
       {
         name: "filepath_or_buffer",
-        type: "typing.Union[ForwardRef('PathLike[str]'), str, typing.IO[~T], io.RawIOBase, io.BufferedIOBase, io.TextIOBase, _io.TextIOWrapper, mmap.mmap]",
+        type: ["python.string"], //TYPE PATH, FILE-LIKE OBJECT
         defaultValue: "_empty",
       },
-      { name: "colspecs", type: "_empty", defaultValue: "infer" },
-      { name: "widths", type: "_empty", defaultValue: null },
-      { name: "infer_nrows", type: "_empty", defaultValue: 100 },
-      { name: "kwds", type: "_empty", defaultValue: "_empty" },
+      { name: "colspecs", type: "_empty", defaultValue: "infer" }, //TYPE list of tuple (int, int)
+      { name: "widths", type: "python.int_array", defaultValue: null }, //TYPE list of int
+      { name: "infer_nrows", type: "python.int", defaultValue: 100 },
+      { name: "kwds", type: "_empty", defaultValue: "_empty" }, //TYPE Optional keyword argumentss
     ],
     code: "",
   },
@@ -790,33 +807,37 @@ export const library: LibraryBlock[] = [
     },
     uri: "pandas.read_gbq",
     arguments: [
-      { name: "query", type: "str", defaultValue: "_empty" },
-      { name: "project_id", type: "typing.Optional[str]", defaultValue: null },
-      { name: "index_col", type: "typing.Optional[str]", defaultValue: null },
+      { name: "query", type: "python.string", defaultValue: "_empty" },
+      { name: "project_id", type: "python.string", defaultValue: null },
+      { name: "index_col", type: "python.string", defaultValue: null },
       {
         name: "col_order",
-        type: "typing.Optional[typing.List[str]]",
+        type: "python.string_array",
         defaultValue: null,
       },
       { name: "reauth", type: "bool", defaultValue: false },
       { name: "auth_local_webserver", type: "bool", defaultValue: false },
-      { name: "dialect", type: "typing.Optional[str]", defaultValue: null },
-      { name: "location", type: "typing.Optional[str]", defaultValue: null },
+      {
+        name: "dialect",
+        type: "python.string",
+        defaultValue: "dialect",
+      },
+      { name: "location", type: "python.string", defaultValue: null },
       {
         name: "configuration",
-        type: "typing.Optional[typing.Dict[str, typing.Any]]",
+        type: "_empty", //TYPE DICT
         defaultValue: null,
       },
-      { name: "credentials", type: "_empty", defaultValue: null },
+      { name: "credentials", type: "_empty", defaultValue: null }, //google.auth.credentials.Credentials
       {
         name: "use_bqstorage_api",
-        type: "typing.Optional[bool]",
-        defaultValue: null,
+        type: "bool",
+        defaultValue: false,
       },
-      { name: "max_results", type: "typing.Optional[int]", defaultValue: null },
+      { name: "max_results", type: "python.int", defaultValue: null },
       {
         name: "progress_bar_type",
-        type: "typing.Optional[str]",
+        type: "python.string",
         defaultValue: null,
       },
     ],
@@ -830,17 +851,17 @@ export const library: LibraryBlock[] = [
     },
     uri: "pandas.read_hdf",
     arguments: [
-      { name: "path_or_buf", type: "_empty", defaultValue: "_empty" },
-      { name: "key", type: "_empty", defaultValue: null },
-      { name: "mode", type: "str", defaultValue: "r" },
-      { name: "errors", type: "str", defaultValue: "strict" },
-      { name: "where", type: "_empty", defaultValue: null },
-      { name: "start", type: "typing.Optional[int]", defaultValue: null },
-      { name: "stop", type: "typing.Optional[int]", defaultValue: null },
-      { name: "columns", type: "_empty", defaultValue: null },
-      { name: "iterator", type: "_empty", defaultValue: false },
-      { name: "chunksize", type: "typing.Optional[int]", defaultValue: null },
-      { name: "kwargs", type: "_empty", defaultValue: "_empty" },
+      { name: "path_or_buf", type: ["python.string"], defaultValue: null }, //TYPE PATH
+      { name: "key", type: "_empty", defaultValue: null }, //TYPE OBJECT
+      { name: "mode", type: ["r", "r+", "a"], defaultValue: "r" },
+      { name: "errors", type: "python.string", defaultValue: "strict" },
+      { name: "where", type: "_empty", defaultValue: null }, //TYPE A list of Term (or convertible) objects.
+      { name: "start", type: "python.int", defaultValue: null },
+      { name: "stop", type: "python.int", defaultValue: null },
+      { name: "columns", type: "python.string", defaultValue: null }, //TYPE LIST
+      { name: "iterator", type: "bool", defaultValue: false },
+      { name: "chunksize", type: "python.int", defaultValue: null },
+      { name: "kwargs", type: "_empty", defaultValue: "_empty" }, //TYPE KWARGS
     ],
     code: "",
   },
@@ -854,45 +875,45 @@ export const library: LibraryBlock[] = [
     arguments: [
       {
         name: "io",
-        type: "typing.Union[ForwardRef('PathLike[str]'), str, typing.IO[~T], io.RawIOBase, io.BufferedIOBase, io.TextIOBase, _io.TextIOWrapper, mmap.mmap]",
+        type: ["python.string"], //TYPE PATH, FILE-LIKE OBJECT
         defaultValue: "_empty",
       },
       {
         name: "match",
-        type: "typing.Union[str, typing.Pattern]",
+        type: "python.string",
         defaultValue: ".+",
       },
-      { name: "flavor", type: "typing.Optional[str]", defaultValue: null },
+      { name: "flavor", type: "python.string", defaultValue: null },
       {
         name: "header",
-        type: "typing.Union[int, typing.Sequence[int], NoneType]",
+        type: ["python.int", "python.int_array"],
         defaultValue: null,
       },
       {
         name: "index_col",
-        type: "typing.Union[int, typing.Sequence[int], NoneType]",
+        type: ["python.int", "python.int_array"],
         defaultValue: null,
       },
       {
         name: "skiprows",
-        type: "typing.Union[int, typing.Sequence[int], slice, NoneType]",
+        type: ["python.int", "python.int_array"],
         defaultValue: null,
       },
       {
         name: "attrs",
-        type: "typing.Optional[typing.Dict[str, str]]",
+        type: "_empty", //TYPE DICT
         defaultValue: null,
       },
       { name: "parse_dates", type: "bool", defaultValue: false },
-      { name: "thousands", type: "typing.Optional[str]", defaultValue: "," },
-      { name: "encoding", type: "typing.Optional[str]", defaultValue: null },
-      { name: "decimal", type: "str", defaultValue: "." },
+      { name: "thousands", type: "python.string", defaultValue: "," },
+      { name: "encoding", type: "python.string", defaultValue: null },
+      { name: "decimal", type: "python.string", defaultValue: "." },
       {
         name: "converters",
-        type: "typing.Optional[typing.Dict]",
+        type: "_empty", //TYPE DICT
         defaultValue: null,
       },
-      { name: "na_values", type: "_empty", defaultValue: null },
+      { name: "na_values", type: "_empty", defaultValue: null }, //TYPE ITERABLE
       { name: "keep_default_na", type: "bool", defaultValue: true },
       { name: "displayed_only", type: "bool", defaultValue: true },
     ],
@@ -906,28 +927,37 @@ export const library: LibraryBlock[] = [
     },
     uri: "pandas.read_json",
     arguments: [
-      { name: "path_or_buf", type: "_empty", defaultValue: null },
-      { name: "orient", type: "_empty", defaultValue: null },
-      { name: "typ", type: "_empty", defaultValue: "frame" },
-      { name: "dtype", type: "_empty", defaultValue: null },
-      { name: "convert_axes", type: "_empty", defaultValue: null },
-      { name: "convert_dates", type: "_empty", defaultValue: true },
+      { name: "path_or_buf", type: ["python.string"], defaultValue: null }, //TYPE PATH, FILE-LIKE OBJECT
+      { name: "orient", type: "python.string", defaultValue: null },
+      { name: "typ", type: ["frame", "series"], defaultValue: "frame" },
+      { name: "dtype", type: "_empty", defaultValue: null }, //TYPE DTYPE
+      { name: "convert_axes", type: "bool", defaultValue: null },
+      {
+        name: "convert_dates",
+        type: ["bool", "python.string_array"],
+        defaultValue: true,
+      },
       { name: "keep_default_dates", type: "bool", defaultValue: true },
       { name: "numpy", type: "bool", defaultValue: false },
       { name: "precise_float", type: "bool", defaultValue: false },
-      { name: "date_unit", type: "_empty", defaultValue: null },
-      { name: "encoding", type: "_empty", defaultValue: null },
+      { name: "date_unit", type: "python.string", defaultValue: null },
+      { name: "encoding", type: "python.string", defaultValue: "utf-8" },
+      {
+        name: "encoding_errors",
+        type: "python.string",
+        defaultValue: "strict",
+      },
       { name: "lines", type: "bool", defaultValue: false },
-      { name: "chunksize", type: "typing.Optional[int]", defaultValue: null },
+      { name: "chunksize", type: "python.int", defaultValue: null },
       {
         name: "compression",
-        type: "typing.Union[str, typing.Dict[str, typing.Any], NoneType]",
+        type: ["python.string"], //TYPE DICT
         defaultValue: "infer",
       },
-      { name: "nrows", type: "typing.Optional[int]", defaultValue: null },
+      { name: "nrows", type: "python.int", defaultValue: null },
       {
         name: "storage_options",
-        type: "typing.Optional[typing.Dict[str, typing.Any]]",
+        type: "_empty", //TYPE DICT
         defaultValue: null,
       },
     ],
@@ -943,15 +973,15 @@ export const library: LibraryBlock[] = [
     arguments: [
       {
         name: "path",
-        type: "typing.Union[ForwardRef('PathLike[str]'), str, typing.IO[~T], io.RawIOBase, io.BufferedIOBase, io.TextIOBase, _io.TextIOWrapper, mmap.mmap]",
+        type: ["python.string"], //TYPE PATH, FILE-LIKE OBJECT
         defaultValue: "_empty",
       },
       {
         name: "columns",
-        type: "typing.Optional[typing.List[str]]",
+        type: "python.string_array",
         defaultValue: null,
       },
-      { name: "kwargs", type: "_empty", defaultValue: "_empty" },
+      { name: "kwargs", type: "_empty", defaultValue: "_empty" }, //TYPE KWARGS
     ],
     code: "",
   },
@@ -963,11 +993,20 @@ export const library: LibraryBlock[] = [
     },
     uri: "pandas.read_parquet",
     arguments: [
-      { name: "path", type: "_empty", defaultValue: "_empty" },
-      { name: "engine", type: "str", defaultValue: "auto" },
-      { name: "columns", type: "_empty", defaultValue: null },
+      {
+        name: "path",
+        type: ["python.string"], //TYPE PATH, FILE-LIKE OBJECT
+        defaultValue: "_empty",
+      },
+      {
+        name: "engine",
+        type: ["auto", "pyarrow", "fastparquet"],
+        defaultValue: "auto",
+      },
+      { name: "columns", type: "python.string", defaultValue: null },
+      { name: "storage_options", type: "_empty", defaultValue: null }, //TYPE DICT
       { name: "use_nullable_dtypes", type: "bool", defaultValue: false },
-      { name: "kwargs", type: "_empty", defaultValue: "_empty" },
+      { name: "kwargs", type: "_empty", defaultValue: "_empty" }, //TYPE KWARGS
     ],
     code: "",
   },
@@ -981,17 +1020,17 @@ export const library: LibraryBlock[] = [
     arguments: [
       {
         name: "filepath_or_buffer",
-        type: "str, path object, file-like object",
-        defaultValue: "_empty",
+        type: ["python.string"], //TYPE PATH, FILE-LIKE OBJECT
+        defaultValue: null,
       },
       {
         name: "compression",
-        type: "typing.Union[str, typing.Dict[str, typing.Any], NoneType]",
+        type: ["python.string"], //TYPE DICT
         defaultValue: "infer",
       },
       {
         name: "storage_options",
-        type: "typing.Optional[typing.Dict[str, typing.Any]]",
+        type: "_empty", //TYPE DICT
         defaultValue: null,
       },
     ],
@@ -1007,17 +1046,17 @@ export const library: LibraryBlock[] = [
     arguments: [
       {
         name: "filepath_or_buffer",
-        type: "typing.Union[ForwardRef('PathLike[str]'), str, typing.IO[~T], io.RawIOBase, io.BufferedIOBase, io.TextIOBase, _io.TextIOWrapper, mmap.mmap]",
+        type: ["python.string"], //TYPE PATH, FILE-LIKE OBJECT
         defaultValue: "_empty",
       },
-      { name: "format", type: "typing.Optional[str]", defaultValue: null },
+      { name: "format", type: ["xport", "sas7bdat"], defaultValue: null },
       {
         name: "index",
-        type: "typing.Optional[typing.Hashable]",
+        type: "python.int",
         defaultValue: null,
       },
-      { name: "encoding", type: "typing.Optional[str]", defaultValue: null },
-      { name: "chunksize", type: "typing.Optional[int]", defaultValue: null },
+      { name: "encoding", type: "python.string", defaultValue: null },
+      { name: "chunksize", type: "python.int", defaultValue: null },
       { name: "iterator", type: "bool", defaultValue: false },
     ],
     code: "",
@@ -1032,12 +1071,12 @@ export const library: LibraryBlock[] = [
     arguments: [
       {
         name: "path",
-        type: "typing.Union[str, pathlib.Path]",
-        defaultValue: "_empty",
+        type: ["python.string"], //TYPE PATH
+        defaultValue: null,
       },
       {
         name: "usecols",
-        type: "typing.Optional[typing.Sequence[str]]",
+        type: "_empty", //TYPE LIST-LIKE
         defaultValue: null,
       },
       { name: "convert_categoricals", type: "bool", defaultValue: true },
@@ -1052,14 +1091,18 @@ export const library: LibraryBlock[] = [
     },
     uri: "pandas.read_sql",
     arguments: [
-      { name: "sql", type: "_empty", defaultValue: "_empty" },
-      { name: "con", type: "_empty", defaultValue: "_empty" },
-      { name: "index_col", type: "_empty", defaultValue: null },
-      { name: "coerce_float", type: "_empty", defaultValue: true },
-      { name: "params", type: "_empty", defaultValue: null },
-      { name: "parse_dates", type: "_empty", defaultValue: null },
-      { name: "columns", type: "_empty", defaultValue: null },
-      { name: "chunksize", type: "typing.Optional[int]", defaultValue: null },
+      { name: "sql", type: "python.string", defaultValue: null },
+      { name: "con", type: ["python.string"], defaultValue: null }, //TYPE SQLAlchemy connectable, or sqlite3 connection
+      {
+        name: "index_col",
+        type: ["python.string", "python.string_array"],
+        defaultValue: null,
+      },
+      { name: "coerce_float", type: "bool", defaultValue: true },
+      { name: "params", type: "_empty", defaultValue: null }, //TYPE DICT,LIST, TUPLE
+      { name: "parse_dates", type: ["python.string"], defaultValue: null }, //TYPE LIST-LIKE, DICT
+      { name: "columns", type: "python.string_array", defaultValue: null },
+      { name: "chunksize", type: "python.int", defaultValue: null },
     ],
     code: "",
   },
@@ -1071,13 +1114,18 @@ export const library: LibraryBlock[] = [
     },
     uri: "pandas.read_sql_query",
     arguments: [
-      { name: "sql", type: "_empty", defaultValue: "_empty" },
-      { name: "con", type: "_empty", defaultValue: "_empty" },
-      { name: "index_col", type: "_empty", defaultValue: null },
-      { name: "coerce_float", type: "_empty", defaultValue: true },
-      { name: "params", type: "_empty", defaultValue: null },
-      { name: "parse_dates", type: "_empty", defaultValue: null },
-      { name: "chunksize", type: "typing.Optional[int]", defaultValue: null },
+      { name: "sql", type: "python.string", defaultValue: null },
+      { name: "con", type: ["python.string"], defaultValue: null }, //TYPE SQLAlchemy connectable, or sqlite3 connection
+      {
+        name: "index_col",
+        type: ["python.string", "python.string_array"],
+        defaultValue: null,
+      },
+      { name: "coerce_float", type: "bool", defaultValue: true },
+      { name: "params", type: "_empty", defaultValue: null }, //TYPE DICT,LIST, TUPLE
+      { name: "parse_dates", type: ["python.string"], defaultValue: null }, //TYPE LIST-LIKE, DICT
+      { name: "columns", type: "python.string_array", defaultValue: null },
+      { name: "chunksize", type: "python.int", defaultValue: null },
     ],
     code: "",
   },
@@ -1089,14 +1137,19 @@ export const library: LibraryBlock[] = [
     },
     uri: "pandas.read_sql_table",
     arguments: [
-      { name: "table_name", type: "_empty", defaultValue: "_empty" },
-      { name: "con", type: "_empty", defaultValue: "_empty" },
-      { name: "schema", type: "_empty", defaultValue: null },
-      { name: "index_col", type: "_empty", defaultValue: null },
-      { name: "coerce_float", type: "_empty", defaultValue: true },
-      { name: "parse_dates", type: "_empty", defaultValue: null },
-      { name: "columns", type: "_empty", defaultValue: null },
-      { name: "chunksize", type: "typing.Optional[int]", defaultValue: null },
+      { name: "sql", type: "python.string", defaultValue: null },
+      { name: "con", type: ["python.string"], defaultValue: null }, //TYPE SQLAlchemy connectable
+      { name: "schema", type: "python.string", defaultValue: null },
+      {
+        name: "index_col",
+        type: ["python.string", "python.string_array"],
+        defaultValue: null,
+      },
+      { name: "coerce_float", type: "bool", defaultValue: true },
+      { name: "params", type: "_empty", defaultValue: null }, //TYPE DICT,LIST, TUPLE
+      { name: "parse_dates", type: ["python.string"], defaultValue: null }, //TYPE LIST-LIKE, DICT
+      { name: "columns", type: "python.string_array", defaultValue: null },
+      { name: "chunksize", type: "python.int", defaultValue: null },
     ],
     code: "",
   },
@@ -1110,25 +1163,30 @@ export const library: LibraryBlock[] = [
     arguments: [
       {
         name: "filepath_or_buffer",
-        type: "typing.Union[ForwardRef('PathLike[str]'), str, typing.IO[~T], io.RawIOBase, io.BufferedIOBase, io.TextIOBase, _io.TextIOWrapper, mmap.mmap]",
+        type: ["python.string"], //TYPE PATH, FILE-LIKE OBJECT
         defaultValue: "_empty",
       },
       { name: "convert_dates", type: "bool", defaultValue: true },
       { name: "convert_categoricals", type: "bool", defaultValue: true },
-      { name: "index_col", type: "typing.Optional[str]", defaultValue: null },
+      { name: "index_col", type: "python.string", defaultValue: null },
       { name: "convert_missing", type: "bool", defaultValue: false },
       { name: "preserve_dtypes", type: "bool", defaultValue: true },
       {
         name: "columns",
-        type: "typing.Optional[typing.Sequence[str]]",
+        type: "python.string_array", //TYPE LIST-LIKE
         defaultValue: null,
       },
       { name: "order_categoricals", type: "bool", defaultValue: true },
-      { name: "chunksize", type: "typing.Optional[int]", defaultValue: null },
+      { name: "chunksize", type: "python.int", defaultValue: null },
       { name: "iterator", type: "bool", defaultValue: false },
       {
+        name: "compression",
+        type: ["python.string"], //TYPE DICT
+        defaultValue: null,
+      },
+      {
         name: "storage_options",
-        type: "typing.Optional[typing.Dict[str, typing.Any]]",
+        type: "_empty", //TYPE DICT
         defaultValue: null,
       },
     ],
@@ -1144,57 +1202,105 @@ export const library: LibraryBlock[] = [
     arguments: [
       {
         name: "filepath_or_buffer",
-        type: "typing.Union[ForwardRef('PathLike[str]'), str, typing.IO[~T], io.RawIOBase, io.BufferedIOBase, io.TextIOBase, _io.TextIOWrapper, mmap.mmap]",
-        defaultValue: "_empty",
+        type: ["python.string"], //TYPE PATH, FILE-LIKE OBJECT
+        defaultValue: null,
       },
-      { name: "sep", type: "_empty", defaultValue: null },
-      { name: "delimiter", type: "_empty", defaultValue: null },
-      { name: "header", type: "_empty", defaultValue: "infer" },
-      { name: "names", type: "_empty", defaultValue: null },
-      { name: "index_col", type: "_empty", defaultValue: null },
-      { name: "usecols", type: "_empty", defaultValue: null },
-      { name: "squeeze", type: "_empty", defaultValue: false },
-      { name: "prefix", type: "_empty", defaultValue: null },
-      { name: "mangle_dupe_cols", type: "_empty", defaultValue: true },
-      { name: "dtype", type: "_empty", defaultValue: null },
-      { name: "engine", type: "_empty", defaultValue: null },
-      { name: "converters", type: "_empty", defaultValue: null },
-      { name: "true_values", type: "_empty", defaultValue: null },
-      { name: "false_values", type: "_empty", defaultValue: null },
-      { name: "skipinitialspace", type: "_empty", defaultValue: false },
-      { name: "skiprows", type: "_empty", defaultValue: null },
-      { name: "skipfooter", type: "_empty", defaultValue: 0 },
-      { name: "nrows", type: "_empty", defaultValue: null },
-      { name: "na_values", type: "_empty", defaultValue: null },
-      { name: "keep_default_na", type: "_empty", defaultValue: true },
-      { name: "na_filter", type: "_empty", defaultValue: true },
-      { name: "verbose", type: "_empty", defaultValue: false },
-      { name: "skip_blank_lines", type: "_empty", defaultValue: true },
-      { name: "parse_dates", type: "_empty", defaultValue: false },
-      { name: "infer_datetime_format", type: "_empty", defaultValue: false },
-      { name: "keep_date_col", type: "_empty", defaultValue: false },
-      { name: "date_parser", type: "_empty", defaultValue: null },
-      { name: "dayfirst", type: "_empty", defaultValue: false },
-      { name: "cache_dates", type: "_empty", defaultValue: true },
-      { name: "iterator", type: "_empty", defaultValue: false },
-      { name: "chunksize", type: "_empty", defaultValue: null },
-      { name: "compression", type: "_empty", defaultValue: "infer" },
-      { name: "thousands", type: "_empty", defaultValue: null },
-      { name: "decimal", type: "str", defaultValue: "." },
-      { name: "lineterminator", type: "_empty", defaultValue: null },
-      { name: "quotechar", type: "_empty", defaultValue: '"' },
-      { name: "quoting", type: "_empty", defaultValue: 0 },
-      { name: "doublequote", type: "_empty", defaultValue: true },
-      { name: "escapechar", type: "_empty", defaultValue: null },
-      { name: "comment", type: "_empty", defaultValue: null },
-      { name: "encoding", type: "_empty", defaultValue: null },
-      { name: "dialect", type: "_empty", defaultValue: null },
-      { name: "error_bad_lines", type: "_empty", defaultValue: true },
-      { name: "warn_bad_lines", type: "_empty", defaultValue: true },
-      { name: "delim_whitespace", type: "_empty", defaultValue: false },
-      { name: "low_memory", type: "_empty", defaultValue: true },
-      { name: "memory_map", type: "_empty", defaultValue: false },
-      { name: "float_precision", type: "_empty", defaultValue: null },
+      { name: "sep", type: "python.string", defaultValue: "\t" },
+      { name: "delimiter", type: "python.string", defaultValue: null },
+      {
+        name: "header",
+        type: ["python.int", "python.int_array"],
+        defaultValue: "infer",
+      },
+      { name: "names", type: ["python.string_array"], defaultValue: null }, //TYPE ARRAY-LIKE
+      {
+        name: "index_col",
+        type: [
+          "python.string",
+          "python.string_array",
+          "python.int",
+          "python.int_array",
+        ],
+        defaultValue: null,
+      },
+      { name: "usecols", type: ["python.string_array"], defaultValue: null }, //TYPE LIST-LIKE, CALLABLE
+      { name: "squeeze", type: "bool", defaultValue: false },
+      { name: "prefix", type: "python.string", defaultValue: null },
+      { name: "mangle_dupe_cols", type: "bool", defaultValue: true },
+      { name: "dtype", type: "_empty", defaultValue: null }, //TYPE DTYPE
+      {
+        name: "engine",
+        type: ["auto", "pyarrow", "fastparquet"],
+        defaultValue: "auto",
+      },
+      { name: "converters", type: "_empty", defaultValue: null }, //TYPE DICT
+      {
+        name: "true_values",
+        type: ["python.string_array"], //TYPE LIST-LIKE
+        defaultValue: null,
+      },
+      {
+        name: "false_values",
+        type: ["python.string_array"], //TYPE LIST-LIKE
+        defaultValue: null,
+      },
+      { name: "skipinitialspace", type: "bool", defaultValue: false },
+      {
+        name: "skiprows",
+        type: ["python.string_array", "python.int_array"], //TYPE LIST-LIKE, CALLABLE
+        defaultValue: null,
+      },
+      { name: "skipfooter", type: "python.int", defaultValue: 0 },
+      { name: "nrows", type: "python.int", defaultValue: null },
+      { name: "na_values", type: ["python.string"], defaultValue: null }, //TYPE LIST-LIKE, SCALAR, DICT
+      { name: "keep_default_na", type: "bool", defaultValue: true },
+      { name: "na_filter", type: "bool", defaultValue: true },
+      { name: "verbose", type: "bool", defaultValue: false },
+      { name: "skip_blank_lines", type: "bool", defaultValue: true },
+      {
+        name: "parse_dates",
+        type: ["bool", "python.int_array", "python.string_array"], //TYPE list of lists or dict
+        defaultValue: false,
+      },
+      { name: "infer_datetime_format", type: "bool", defaultValue: false },
+      { name: "keep_date_col", type: "bool", defaultValue: false },
+      { name: "date_parser", type: "_empty", defaultValue: null }, //TYPE FUNCTION
+      { name: "dayfirst", type: "bool", defaultValue: false },
+      { name: "cache_dates", type: "bool", defaultValue: true },
+      { name: "iterator", type: "bool", defaultValue: false },
+      { name: "chunksize", type: "python.int", defaultValue: null },
+      { name: "compression", type: ["python.string"], defaultValue: "infer" }, //TYPE DICT
+      { name: "thousands", type: "python.string", defaultValue: null },
+      { name: "decimal", type: "python.string", defaultValue: "." },
+      { name: "lineterminator", type: "python.string", defaultValue: null },
+      { name: "quotechar", type: "python.string", defaultValue: '"' },
+      { name: "quoting", type: "python.string", defaultValue: 0 },
+      { name: "doublequote", type: "bool", defaultValue: true },
+      { name: "escapechar", type: "python.string", defaultValue: null },
+      { name: "comment", type: "python.string", defaultValue: null },
+      { name: "encoding", type: "python.string", defaultValue: null },
+      {
+        name: "encoding_errors",
+        type: "python.string",
+        defaultValue: "strict",
+      },
+      { name: "dialect", type: "python.string", defaultValue: null },
+      { name: "error_bad_lines", type: "bool", defaultValue: true },
+      { name: "warn_bad_lines", type: "bool", defaultValue: true },
+      {
+        name: "on_bad_lines",
+        type: ["error", "warn", "skip"],
+        defaultValue: true,
+      },
+      { name: "delim_whitespace", type: "bool", defaultValue: false },
+      { name: "low_memory", type: "bool", defaultValue: true },
+      { name: "memory_map", type: "bool", defaultValue: false },
+      { name: "float_precision", type: "python.string", defaultValue: null },
+      {
+        name: "storage_options",
+        type: "_empty", //TYPE DICT
+        defaultValue: null,
+      },
     ],
     code: "",
   },
@@ -1219,7 +1325,11 @@ export const library: LibraryBlock[] = [
     },
     uri: "pandas.show_versions",
     arguments: [
-      { name: "as_json", type: "typing.Union[str, bool]", defaultValue: false },
+      {
+        name: "as_json",
+        type: ["python.string", "bool"],
+        defaultValue: false,
+      },
     ],
     code: "",
   },
@@ -1230,7 +1340,7 @@ export const library: LibraryBlock[] = [
       icon: "maximize",
     },
     uri: "pandas.test",
-    arguments: [{ name: "extra_args", type: "_empty", defaultValue: null }],
+    arguments: [{ name: "extra_args", type: "any", defaultValue: null }],
     code: "",
   },
   {
@@ -1241,12 +1351,12 @@ export const library: LibraryBlock[] = [
     },
     uri: "pandas.timedelta_range",
     arguments: [
-      { name: "start", type: "_empty", defaultValue: null },
-      { name: "end", type: "_empty", defaultValue: null },
-      { name: "periods", type: "_empty", defaultValue: null },
-      { name: "freq", type: "_empty", defaultValue: null },
-      { name: "name", type: "_empty", defaultValue: null },
-      { name: "closed", type: "_empty", defaultValue: null },
+      { name: "start", type: ["python.string"], defaultValue: null }, //TYPE TIMEDELTA LIKE
+      { name: "end", type: ["python.string"], defaultValue: null }, //TYPE TIMEDELTA LIKE
+      { name: "periods", type: "python.int", defaultValue: null },
+      { name: "freq", type: ["python.string"], defaultValue: "D" }, //TYPE DATEOFFSET
+      { name: "name", type: "python.string", defaultValue: null },
+      { name: "closed", type: "python.string", defaultValue: null },
     ],
     code: "",
   },
@@ -1260,18 +1370,27 @@ export const library: LibraryBlock[] = [
     arguments: [
       {
         name: "arg",
-        type: "typing.Union[~DatetimeScalar, typing.List, typing.Tuple, ~ArrayLike, ForwardRef('Series')]",
+        type: [
+          "python.int",
+          "python.float",
+          "python.string",
+          "pandas.dataframe",
+        ], // datetime, list, tuple, 1-d array, Series, DataFrame, dict-like
         defaultValue: "_empty",
       },
-      { name: "errors", type: "str", defaultValue: "raise" },
+      {
+        name: "errors",
+        type: ["ignore", "raise", "coerce"],
+        defaultValue: "raise",
+      },
       { name: "dayfirst", type: "bool", defaultValue: false },
       { name: "yearfirst", type: "bool", defaultValue: false },
-      { name: "utc", type: "typing.Optional[bool]", defaultValue: null },
-      { name: "format", type: "typing.Optional[str]", defaultValue: null },
+      { name: "utc", type: "bool", defaultValue: null },
+      { name: "format", type: "python.string", defaultValue: null },
       { name: "exact", type: "bool", defaultValue: true },
-      { name: "unit", type: "typing.Optional[str]", defaultValue: null },
+      { name: "unit", type: "python.string", defaultValue: "ns" },
       { name: "infer_datetime_format", type: "bool", defaultValue: false },
-      { name: "origin", type: "_empty", defaultValue: "unix" },
+      { name: "origin", type: "_empty", defaultValue: "unix" }, //TYPE SCALAR
       { name: "cache", type: "bool", defaultValue: true },
     ],
     code: "",
@@ -1284,9 +1403,13 @@ export const library: LibraryBlock[] = [
     },
     uri: "pandas.to_numeric",
     arguments: [
-      { name: "arg", type: "_empty", defaultValue: "_empty" },
-      { name: "errors", type: "_empty", defaultValue: "raise" },
-      { name: "downcast", type: "_empty", defaultValue: null },
+      { name: "arg", type: "_empty", defaultValue: "_empty" }, //TYPE SCALAR, list, tuple, 1-d array, or Series
+      {
+        name: "errors",
+        type: ["ignore", "raise", "coerce"],
+        defaultValue: "raise",
+      },
+      { name: "downcast", type: "python.string", defaultValue: null },
     ],
     code: "",
   },
@@ -1298,21 +1421,20 @@ export const library: LibraryBlock[] = [
     },
     uri: "pandas.to_pickle",
     arguments: [
-      { name: "obj", type: "typing.Any", defaultValue: "_empty" },
       {
-        name: "filepath_or_buffer",
-        type: "typing.Union[ForwardRef('PathLike[str]'), str, typing.IO[~T], io.RawIOBase, io.BufferedIOBase, io.TextIOBase, _io.TextIOWrapper, mmap.mmap]",
-        defaultValue: "_empty",
+        name: "path",
+        type: "python.string",
+        defaultValue: null,
       },
       {
         name: "compression",
-        type: "typing.Union[str, typing.Dict[str, typing.Any], NoneType]",
+        type: ["python.string"], //TYPE DICT
         defaultValue: "infer",
       },
       { name: "protocol", type: "python.int", defaultValue: 5 },
       {
         name: "storage_options",
-        type: "typing.Optional[typing.Dict[str, typing.Any]]",
+        type: "_empty", //TYPE DICT
         defaultValue: null,
       },
     ],
@@ -1326,9 +1448,13 @@ export const library: LibraryBlock[] = [
     },
     uri: "pandas.to_timedelta",
     arguments: [
-      { name: "arg", type: "_empty", defaultValue: "_empty" },
-      { name: "unit", type: "_empty", defaultValue: null },
-      { name: "errors", type: "_empty", defaultValue: "raise" },
+      { name: "arg", type: ["python.string"], defaultValue: "_empty" }, //TYPE TIMEDELTA, LIST-LIKE, SERIES
+      { name: "unit", type: "python.string", defaultValue: null },
+      {
+        name: "errors",
+        type: ["ignore", "raise", "coerce"],
+        defaultValue: "raise",
+      },
     ],
     code: "",
   },
@@ -1339,11 +1465,11 @@ export const library: LibraryBlock[] = [
       icon: "maximize",
     },
     uri: "pandas.unique",
-    arguments: [{ name: "values", type: "_empty", defaultValue: "_empty" }],
+    arguments: [{ name: "values", type: "any", defaultValue: "_empty" }], //TYPE 1d array-like
     code: "",
   },
   {
-    name: "value_counts",
+    name: "value_counts", //NON TROVO IL CORRISPONDENTE IN DOCS
     style: {
       bg: { color: "red", opacity: 500 },
       icon: "maximize",
@@ -1354,7 +1480,6 @@ export const library: LibraryBlock[] = [
       { name: "sort", type: "bool", defaultValue: true },
       { name: "ascending", type: "bool", defaultValue: false },
       { name: "normalize", type: "bool", defaultValue: false },
-      { name: "bins", type: "_empty", defaultValue: null },
       { name: "dropna", type: "bool", defaultValue: true },
     ],
     code: "",
@@ -1367,12 +1492,12 @@ export const library: LibraryBlock[] = [
     },
     uri: "pandas.wide_to_long",
     arguments: [
-      { name: "df", type: "DataFrame", defaultValue: "_empty" },
-      { name: "stubnames", type: "_empty", defaultValue: "_empty" },
-      { name: "i", type: "_empty", defaultValue: "_empty" },
-      { name: "j", type: "_empty", defaultValue: "_empty" },
-      { name: "sep", type: "str", defaultValue: "" },
-      { name: "suffix", type: "str", defaultValue: "\\d+" },
+      { name: "df", type: "pandas.dataframe", defaultValue: null }, //TYPE DataFrame
+      { name: "stubnames", type: ["python.string"], defaultValue: null }, //TYPE LIST-LIKE
+      { name: "i", type: ["python.string"], defaultValue: null }, //TYPE LIST-LIKE
+      { name: "j", type: "python.string", defaultValue: null },
+      { name: "sep", type: "python.string", defaultValue: "" },
+      { name: "suffix", type: "python.string", defaultValue: "\\d+" },
     ],
     code: "",
   },
