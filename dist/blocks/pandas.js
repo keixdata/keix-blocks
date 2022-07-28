@@ -602,7 +602,8 @@ export const library = [
             { name: "sep", type: "python.string", defaultValue: "\\s+" },
             { name: "kwargs", type: "_empty", defaultValue: "_empty" }, //TYPE KWARGS
         ],
-        code: "",
+        returnType: "pandas.dataframe",
+        code: "from pandas import read_clipboard",
     },
     {
         name: "read_csv",
@@ -614,8 +615,8 @@ export const library = [
         arguments: [
             {
                 name: "filepath_or_buffer",
-                type: ["python.string"],
-                defaultValue: "_empty",
+                type: "python.string",
+                defaultValue: null,
             },
             { name: "sep", type: "python.string", defaultValue: null },
             { name: "delimiter", type: "python.string", defaultValue: null },
@@ -702,7 +703,8 @@ export const library = [
                 defaultValue: null,
             },
         ],
-        code: "",
+        returnType: "pandas.dataframe",
+        code: "from pandas import read_csv",
     },
     {
         name: "read_excel",
@@ -760,7 +762,8 @@ export const library = [
                 defaultValue: null,
             },
         ],
-        code: "",
+        returnType: "pandas.dataframe",
+        code: "from pandas import read_excel",
     },
     {
         name: "read_feather",
@@ -770,7 +773,7 @@ export const library = [
         },
         uri: "pandas.read_feather",
         arguments: [
-            { name: "path", type: ["python.string"], defaultValue: null },
+            { name: "path", type: "python.string", defaultValue: null },
             { name: "columns", type: "_empty", defaultValue: null },
             { name: "use_threads", type: "python.bool", defaultValue: true },
             {
@@ -779,7 +782,8 @@ export const library = [
                 defaultValue: null,
             },
         ],
-        code: "",
+        returnType: "pandas.dataframe",
+        code: "from pandas import read_feather",
     },
     {
         name: "read_fwf",
@@ -791,15 +795,16 @@ export const library = [
         arguments: [
             {
                 name: "filepath_or_buffer",
-                type: ["python.string"],
-                defaultValue: "_empty",
+                type: "python.string",
+                defaultValue: null,
             },
             { name: "colspecs", type: "_empty", defaultValue: "infer" },
             { name: "widths", type: "python.int_array", defaultValue: null },
             { name: "infer_nrows", type: "python.int", defaultValue: 100 },
             { name: "kwds", type: "_empty", defaultValue: "_empty" }, //TYPE Optional keyword argumentss
         ],
-        code: "",
+        returnType: "pandas.dataframe",
+        code: "from pandas import read_fwf",
     },
     {
         name: "read_gbq",
@@ -847,7 +852,8 @@ export const library = [
                 defaultValue: null,
             },
         ],
-        code: "",
+        returnType: "pandas.dataframe",
+        code: "from pandas import read_gbq",
     },
     {
         name: "read_hdf",
@@ -857,7 +863,7 @@ export const library = [
         },
         uri: "pandas.read_hdf",
         arguments: [
-            { name: "path_or_buf", type: ["python.string"], defaultValue: null },
+            { name: "path_or_buf", type: "python.string", defaultValue: null },
             { name: "key", type: "_empty", defaultValue: null },
             { name: "mode", type: ["r", "r+", "a"], defaultValue: "r" },
             { name: "errors", type: "python.string", defaultValue: "strict" },
@@ -869,7 +875,8 @@ export const library = [
             { name: "chunksize", type: "python.int", defaultValue: null },
             { name: "kwargs", type: "_empty", defaultValue: "_empty" }, //TYPE KWARGS
         ],
-        code: "",
+        returnType: "_empty",
+        code: "from pandas import read_hdf",
     },
     {
         name: "read_html",
@@ -881,8 +888,8 @@ export const library = [
         arguments: [
             {
                 name: "io",
-                type: ["python.string"],
-                defaultValue: "_empty",
+                type: "python.string",
+                defaultValue: null,
             },
             {
                 name: "match",
@@ -923,7 +930,8 @@ export const library = [
             { name: "keep_default_na", type: "python.bool", defaultValue: true },
             { name: "displayed_only", type: "python.bool", defaultValue: true },
         ],
-        code: "",
+        returnType: "pandas.dataframe_array",
+        code: "from pandas import read_html",
     },
     {
         name: "read_json",
@@ -933,7 +941,7 @@ export const library = [
         },
         uri: "pandas.read_json",
         arguments: [
-            { name: "path_or_buf", type: ["python.string"], defaultValue: null },
+            { name: "path_or_buf", type: "python.string", defaultValue: null },
             { name: "orient", type: "python.string", defaultValue: null },
             { name: "typ", type: ["frame", "series"], defaultValue: "frame" },
             { name: "dtype", type: "_empty", defaultValue: null },
@@ -967,7 +975,8 @@ export const library = [
                 defaultValue: null,
             },
         ],
-        code: "",
+        returnType: "pandas.dataframe",
+        code: "from pandas import read_json",
     },
     {
         name: "read_orc",
@@ -979,8 +988,8 @@ export const library = [
         arguments: [
             {
                 name: "path",
-                type: ["python.string"],
-                defaultValue: "_empty",
+                type: "python.string",
+                defaultValue: null,
             },
             {
                 name: "columns",
@@ -989,7 +998,8 @@ export const library = [
             },
             { name: "kwargs", type: "_empty", defaultValue: "_empty" }, //TYPE KWARGS
         ],
-        code: "",
+        returnType: "pandas.dataframe",
+        code: "from pandas import read_orc",
     },
     {
         name: "read_parquet",
@@ -1001,8 +1011,8 @@ export const library = [
         arguments: [
             {
                 name: "path",
-                type: ["python.string"],
-                defaultValue: "_empty",
+                type: "python.string",
+                defaultValue: null,
             },
             {
                 name: "engine",
@@ -1014,7 +1024,8 @@ export const library = [
             { name: "use_nullable_dtypes", type: "python.bool", defaultValue: false },
             { name: "kwargs", type: "_empty", defaultValue: "_empty" }, //TYPE KWARGS
         ],
-        code: "",
+        returnType: "pandas.dataframe",
+        code: "from pandas import read_parquet",
     },
     {
         name: "read_pickle",
@@ -1026,7 +1037,7 @@ export const library = [
         arguments: [
             {
                 name: "filepath_or_buffer",
-                type: ["python.string"],
+                type: "python.string",
                 defaultValue: null,
             },
             {
@@ -1040,7 +1051,8 @@ export const library = [
                 defaultValue: null,
             },
         ],
-        code: "",
+        returnType: "_empty",
+        code: "from pandas import read_pickle",
     },
     {
         name: "read_sas",
@@ -1052,8 +1064,8 @@ export const library = [
         arguments: [
             {
                 name: "filepath_or_buffer",
-                type: ["python.string"],
-                defaultValue: "_empty",
+                type: "python.string",
+                defaultValue: null,
             },
             { name: "format", type: ["xport", "sas7bdat"], defaultValue: null },
             {
@@ -1065,7 +1077,8 @@ export const library = [
             { name: "chunksize", type: "python.int", defaultValue: null },
             { name: "iterator", type: "python.bool", defaultValue: false },
         ],
-        code: "",
+        returnType: "pandas.dataframe",
+        code: "from pandas import read_sas",
     },
     {
         name: "read_spss",
@@ -1077,7 +1090,7 @@ export const library = [
         arguments: [
             {
                 name: "path",
-                type: ["python.string"],
+                type: "python.string",
                 defaultValue: null,
             },
             {
@@ -1087,7 +1100,8 @@ export const library = [
             },
             { name: "convert_categoricals", type: "python.bool", defaultValue: true },
         ],
-        code: "",
+        returnType: "pandas.dataframe",
+        code: "from pandas import read_spss",
     },
     {
         name: "read_sql",
@@ -1110,7 +1124,8 @@ export const library = [
             { name: "columns", type: "python.string_array", defaultValue: null },
             { name: "chunksize", type: "python.int", defaultValue: null },
         ],
-        code: "",
+        returnType: "pandas.dataframe",
+        code: "from pandas import read_sql",
     },
     {
         name: "read_sql_query",
@@ -1133,7 +1148,8 @@ export const library = [
             { name: "columns", type: "python.string_array", defaultValue: null },
             { name: "chunksize", type: "python.int", defaultValue: null },
         ],
-        code: "",
+        returnType: "pandas.dataframe",
+        code: "from pandas import read_sql_query",
     },
     {
         name: "read_sql_table",
@@ -1157,7 +1173,8 @@ export const library = [
             { name: "columns", type: "python.string_array", defaultValue: null },
             { name: "chunksize", type: "python.int", defaultValue: null },
         ],
-        code: "",
+        returnType: "pandas.dataframe",
+        code: "from pandas import read_sql_table",
     },
     {
         name: "read_stata",
@@ -1169,8 +1186,8 @@ export const library = [
         arguments: [
             {
                 name: "filepath_or_buffer",
-                type: ["python.string"],
-                defaultValue: "_empty",
+                type: "python.string",
+                defaultValue: null,
             },
             { name: "convert_dates", type: "python.bool", defaultValue: true },
             { name: "convert_categoricals", type: "python.bool", defaultValue: true },
@@ -1196,7 +1213,8 @@ export const library = [
                 defaultValue: null,
             },
         ],
-        code: "",
+        returnType: "pandas.dataframe",
+        code: "from pandas import read_stata",
     },
     {
         name: "read_table",
@@ -1208,7 +1226,7 @@ export const library = [
         arguments: [
             {
                 name: "filepath_or_buffer",
-                type: ["python.string"],
+                type: "python.string",
                 defaultValue: null,
             },
             { name: "sep", type: "python.string", defaultValue: "\t" },
@@ -1312,7 +1330,8 @@ export const library = [
                 defaultValue: null,
             },
         ],
-        code: "",
+        returnType: "pandas.dataframe",
+        code: "from pandas import read_table",
     },
     {
         name: "set_eng_float_format",
@@ -1386,7 +1405,7 @@ export const library = [
                     "python.string",
                     "pandas.dataframe",
                 ],
-                defaultValue: "_empty",
+                defaultValue: null,
             },
             {
                 name: "errors",

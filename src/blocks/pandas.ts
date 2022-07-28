@@ -604,7 +604,8 @@ export const library: LibraryBlock[] = [
       { name: "sep", type: "python.string", defaultValue: "\\s+" },
       { name: "kwargs", type: "_empty", defaultValue: "_empty" }, //TYPE KWARGS
     ],
-    code: "",
+    returnType: "pandas.dataframe",
+    code: "from pandas import read_clipboard",
   },
   {
     name: "read_csv",
@@ -616,8 +617,8 @@ export const library: LibraryBlock[] = [
     arguments: [
       {
         name: "filepath_or_buffer",
-        type: ["python.string"], //TYPE PATH
-        defaultValue: "_empty",
+        type: "python.string",
+        defaultValue: null,
       },
       { name: "sep", type: "python.string", defaultValue: null },
       { name: "delimiter", type: "python.string", defaultValue: null },
@@ -704,7 +705,8 @@ export const library: LibraryBlock[] = [
         defaultValue: null,
       },
     ],
-    code: "",
+    returnType: "pandas.dataframe",
+    code: "from pandas import read_csv",
   },
   {
     name: "read_excel",
@@ -714,7 +716,7 @@ export const library: LibraryBlock[] = [
     },
     uri: "pandas.read_excel",
     arguments: [
-      { name: "io", type: ["python.string"], defaultValue: null }, //TYPE PATH, BYTES, EXCEL FILE, FILE-LIKE OBJECT
+      { name: "io", type: ["python.string"], defaultValue: null }, //TYPE BYTES
       {
         name: "sheet_name",
         type: ["python.string", "python.int", "python.string_array"],
@@ -762,7 +764,8 @@ export const library: LibraryBlock[] = [
         defaultValue: null,
       },
     ],
-    code: "",
+    returnType: "pandas.dataframe", //TYPE DICT OF DATAFRAME
+    code: "from pandas import read_excel",
   },
   {
     name: "read_feather",
@@ -772,7 +775,7 @@ export const library: LibraryBlock[] = [
     },
     uri: "pandas.read_feather",
     arguments: [
-      { name: "path", type: ["python.string"], defaultValue: null }, //TYPE PATH, FILE-LIKE OBJECT
+      { name: "path", type: "python.string", defaultValue: null },
       { name: "columns", type: "_empty", defaultValue: null }, //TYPE SEQUENCE
       { name: "use_threads", type: "python.bool", defaultValue: true },
       {
@@ -781,7 +784,8 @@ export const library: LibraryBlock[] = [
         defaultValue: null,
       },
     ],
-    code: "",
+    returnType: "pandas.dataframe",
+    code: "from pandas import read_feather",
   },
   {
     name: "read_fwf",
@@ -793,15 +797,16 @@ export const library: LibraryBlock[] = [
     arguments: [
       {
         name: "filepath_or_buffer",
-        type: ["python.string"], //TYPE PATH, FILE-LIKE OBJECT
-        defaultValue: "_empty",
+        type: "python.string",
+        defaultValue: null,
       },
       { name: "colspecs", type: "_empty", defaultValue: "infer" }, //TYPE list of tuple (int, int)
       { name: "widths", type: "python.int_array", defaultValue: null }, //TYPE list of int
       { name: "infer_nrows", type: "python.int", defaultValue: 100 },
       { name: "kwds", type: "_empty", defaultValue: "_empty" }, //TYPE Optional keyword argumentss
     ],
-    code: "",
+    returnType: "pandas.dataframe",
+    code: "from pandas import read_fwf",
   },
   {
     name: "read_gbq",
@@ -849,7 +854,8 @@ export const library: LibraryBlock[] = [
         defaultValue: null,
       },
     ],
-    code: "",
+    returnType: "pandas.dataframe",
+    code: "from pandas import read_gbq",
   },
   {
     name: "read_hdf",
@@ -859,7 +865,7 @@ export const library: LibraryBlock[] = [
     },
     uri: "pandas.read_hdf",
     arguments: [
-      { name: "path_or_buf", type: ["python.string"], defaultValue: null }, //TYPE PATH
+      { name: "path_or_buf", type: "python.string", defaultValue: null },
       { name: "key", type: "_empty", defaultValue: null }, //TYPE OBJECT
       { name: "mode", type: ["r", "r+", "a"], defaultValue: "r" },
       { name: "errors", type: "python.string", defaultValue: "strict" },
@@ -871,7 +877,8 @@ export const library: LibraryBlock[] = [
       { name: "chunksize", type: "python.int", defaultValue: null },
       { name: "kwargs", type: "_empty", defaultValue: "_empty" }, //TYPE KWARGS
     ],
-    code: "",
+    returnType: "_empty", //TYPE OBJ
+    code: "from pandas import read_hdf",
   },
   {
     name: "read_html",
@@ -883,8 +890,8 @@ export const library: LibraryBlock[] = [
     arguments: [
       {
         name: "io",
-        type: ["python.string"], //TYPE PATH, FILE-LIKE OBJECT
-        defaultValue: "_empty",
+        type: "python.string",
+        defaultValue: null,
       },
       {
         name: "match",
@@ -925,7 +932,8 @@ export const library: LibraryBlock[] = [
       { name: "keep_default_na", type: "python.bool", defaultValue: true },
       { name: "displayed_only", type: "python.bool", defaultValue: true },
     ],
-    code: "",
+    returnType: "pandas.dataframe_array", //TYPE DATAFRAME_ARRAY
+    code: "from pandas import read_html",
   },
   {
     name: "read_json",
@@ -935,7 +943,7 @@ export const library: LibraryBlock[] = [
     },
     uri: "pandas.read_json",
     arguments: [
-      { name: "path_or_buf", type: ["python.string"], defaultValue: null }, //TYPE PATH, FILE-LIKE OBJECT
+      { name: "path_or_buf", type: "python.string", defaultValue: null },
       { name: "orient", type: "python.string", defaultValue: null },
       { name: "typ", type: ["frame", "series"], defaultValue: "frame" },
       { name: "dtype", type: "_empty", defaultValue: null }, //TYPE DTYPE
@@ -969,7 +977,8 @@ export const library: LibraryBlock[] = [
         defaultValue: null,
       },
     ],
-    code: "",
+    returnType: "pandas.dataframe", //TYPE SERIES
+    code: "from pandas import read_json",
   },
   {
     name: "read_orc",
@@ -981,8 +990,8 @@ export const library: LibraryBlock[] = [
     arguments: [
       {
         name: "path",
-        type: ["python.string"], //TYPE PATH, FILE-LIKE OBJECT
-        defaultValue: "_empty",
+        type: "python.string",
+        defaultValue: null,
       },
       {
         name: "columns",
@@ -991,7 +1000,8 @@ export const library: LibraryBlock[] = [
       },
       { name: "kwargs", type: "_empty", defaultValue: "_empty" }, //TYPE KWARGS
     ],
-    code: "",
+    returnType: "pandas.dataframe",
+    code: "from pandas import read_orc",
   },
   {
     name: "read_parquet",
@@ -1003,8 +1013,8 @@ export const library: LibraryBlock[] = [
     arguments: [
       {
         name: "path",
-        type: ["python.string"], //TYPE PATH, FILE-LIKE OBJECT
-        defaultValue: "_empty",
+        type: "python.string",
+        defaultValue: null,
       },
       {
         name: "engine",
@@ -1016,7 +1026,8 @@ export const library: LibraryBlock[] = [
       { name: "use_nullable_dtypes", type: "python.bool", defaultValue: false },
       { name: "kwargs", type: "_empty", defaultValue: "_empty" }, //TYPE KWARGS
     ],
-    code: "",
+    returnType: "pandas.dataframe",
+    code: "from pandas import read_parquet",
   },
   {
     name: "read_pickle",
@@ -1028,7 +1039,7 @@ export const library: LibraryBlock[] = [
     arguments: [
       {
         name: "filepath_or_buffer",
-        type: ["python.string"], //TYPE PATH, FILE-LIKE OBJECT
+        type: "python.string",
         defaultValue: null,
       },
       {
@@ -1042,7 +1053,8 @@ export const library: LibraryBlock[] = [
         defaultValue: null,
       },
     ],
-    code: "",
+    returnType: "_empty", //TYPE OBJECT OF THE SAME TYPE OF THE INPUT
+    code: "from pandas import read_pickle",
   },
   {
     name: "read_sas",
@@ -1054,8 +1066,8 @@ export const library: LibraryBlock[] = [
     arguments: [
       {
         name: "filepath_or_buffer",
-        type: ["python.string"], //TYPE PATH, FILE-LIKE OBJECT
-        defaultValue: "_empty",
+        type: "python.string",
+        defaultValue: null,
       },
       { name: "format", type: ["xport", "sas7bdat"], defaultValue: null },
       {
@@ -1067,7 +1079,8 @@ export const library: LibraryBlock[] = [
       { name: "chunksize", type: "python.int", defaultValue: null },
       { name: "iterator", type: "python.bool", defaultValue: false },
     ],
-    code: "",
+    returnType: "pandas.dataframe",
+    code: "from pandas import read_sas",
   },
   {
     name: "read_spss",
@@ -1079,7 +1092,7 @@ export const library: LibraryBlock[] = [
     arguments: [
       {
         name: "path",
-        type: ["python.string"], //TYPE PATH
+        type: "python.string",
         defaultValue: null,
       },
       {
@@ -1089,7 +1102,8 @@ export const library: LibraryBlock[] = [
       },
       { name: "convert_categoricals", type: "python.bool", defaultValue: true },
     ],
-    code: "",
+    returnType: "pandas.dataframe",
+    code: "from pandas import read_spss",
   },
   {
     name: "read_sql",
@@ -1112,7 +1126,8 @@ export const library: LibraryBlock[] = [
       { name: "columns", type: "python.string_array", defaultValue: null },
       { name: "chunksize", type: "python.int", defaultValue: null },
     ],
-    code: "",
+    returnType: "pandas.dataframe",
+    code: "from pandas import read_sql",
   },
   {
     name: "read_sql_query",
@@ -1135,7 +1150,8 @@ export const library: LibraryBlock[] = [
       { name: "columns", type: "python.string_array", defaultValue: null },
       { name: "chunksize", type: "python.int", defaultValue: null },
     ],
-    code: "",
+    returnType: "pandas.dataframe",
+    code: "from pandas import read_sql_query",
   },
   {
     name: "read_sql_table",
@@ -1159,7 +1175,8 @@ export const library: LibraryBlock[] = [
       { name: "columns", type: "python.string_array", defaultValue: null },
       { name: "chunksize", type: "python.int", defaultValue: null },
     ],
-    code: "",
+    returnType: "pandas.dataframe",
+    code: "from pandas import read_sql_table",
   },
   {
     name: "read_stata",
@@ -1171,8 +1188,8 @@ export const library: LibraryBlock[] = [
     arguments: [
       {
         name: "filepath_or_buffer",
-        type: ["python.string"], //TYPE PATH, FILE-LIKE OBJECT
-        defaultValue: "_empty",
+        type: "python.string",
+        defaultValue: null,
       },
       { name: "convert_dates", type: "python.bool", defaultValue: true },
       { name: "convert_categoricals", type: "python.bool", defaultValue: true },
@@ -1198,7 +1215,8 @@ export const library: LibraryBlock[] = [
         defaultValue: null,
       },
     ],
-    code: "",
+    returnType: "pandas.dataframe",
+    code: "from pandas import read_stata",
   },
   {
     name: "read_table",
@@ -1210,7 +1228,7 @@ export const library: LibraryBlock[] = [
     arguments: [
       {
         name: "filepath_or_buffer",
-        type: ["python.string"], //TYPE PATH, FILE-LIKE OBJECT
+        type: "python.string",
         defaultValue: null,
       },
       { name: "sep", type: "python.string", defaultValue: "\t" },
@@ -1314,7 +1332,8 @@ export const library: LibraryBlock[] = [
         defaultValue: null,
       },
     ],
-    code: "",
+    returnType: "pandas.dataframe",
+    code: "from pandas import read_table",
   },
   {
     name: "set_eng_float_format",
@@ -1388,7 +1407,7 @@ export const library: LibraryBlock[] = [
           "python.string",
           "pandas.dataframe",
         ], // datetime, list, tuple, 1-d array, Series, DataFrame, dict-like
-        defaultValue: "_empty",
+        defaultValue: null,
       },
       {
         name: "errors",
