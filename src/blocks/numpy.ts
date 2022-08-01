@@ -32,6 +32,11 @@ export const library: LibraryBlock[] = [
     code: "from numpy.ndarray import item",
     arguments: [
       {
+        name: "self",
+        type: "numpy.ndarray",
+        isPort: true,
+      },
+      {
         name: "*args",
         type: "python.int",
       },
@@ -51,6 +56,11 @@ export const library: LibraryBlock[] = [
     code: "from numpy.ndarray import itemset",
     arguments: [
       {
+        name: "self",
+        type: "numpy.ndarray",
+        isPort: true,
+      },
+      {
         name: "*args",
         type: ["python.int", "python.int_array"],
         defaultValue: null,
@@ -62,7 +72,139 @@ export const library: LibraryBlock[] = [
         defaultValue: null,
       },
     ],
-    returnType: "ndarray",
+    returnType: "numpy.ndarray",
+    style: {
+      icon: "array-numeric",
+      bg: {
+        color: "yellow",
+        opacity: 500,
+      },
+    },
+  },
+  {
+    name: "getfield",
+    uri: "numpy.ndarray.getfield",
+    code: "from numpy.ndarray import getfield",
+    arguments: [
+      {
+        name: "self",
+        type: "numpy.ndarray",
+        isPort: true,
+      },
+      {
+        name: "dtype",
+        type: "python.string",
+        defaultValue: null,
+      },
+      {
+        name: "offset",
+        type: "python.int",
+        defaultValue: null,
+      },
+    ],
+    returnType: "numpy.ndarray",
+    style: {
+      icon: "array-numeric",
+      bg: {
+        color: "yellow",
+        opacity: 500,
+      },
+    },
+  },
+  {
+    name: "fill",
+    uri: "numpy.ndarray.fill",
+    code: "from numpy.ndarray import fill",
+    arguments: [
+      {
+        name: "self",
+        type: "numpy.ndarray",
+        isPort: true,
+      },
+      {
+        name: "dtype",
+        type: "any", //TYPE ANY
+        defaultValue: null,
+      },
+    ],
+    returnType: "numpy.ndarray",
+    style: {
+      icon: "array-numeric",
+      bg: {
+        color: "yellow",
+        opacity: 500,
+      },
+    },
+  },
+  {
+    name: "resize",
+    uri: "numpy.ndarray.resize",
+    code: "from numpy.ndarray import resize",
+    arguments: [
+      {
+        name: "self",
+        type: "numpy.ndarray",
+        isPort: true,
+      },
+      {
+        name: "new_shape",
+        type: "python.int_array",
+        defaultValue: null,
+      },
+      {
+        name: "refcheck",
+        type: "python.bool",
+        optional: true,
+        defaultValue: true,
+      },
+    ],
+    returnType: "none", //TYPE NONE Change shape and size of array in-place.
+    style: {
+      icon: "array-numeric",
+      bg: {
+        color: "yellow",
+        opacity: 500,
+      },
+    },
+  },
+  {
+    name: "transpose",
+    uri: "numpy.ndarray.transpose",
+    code: "from numpy.ndarray import transpose",
+    arguments: [
+      {
+        name: "self",
+        type: "numpy.ndarray",
+        isPort: true,
+      },
+      {
+        name: "axes",
+        type: ["none", "python.int_array"], // TYPE NONE None or no argument: reverses the order of the axes.
+        optional: true,
+        defaultValue: true,
+      },
+    ],
+    returnType: "numpy.ndarray",
+    style: {
+      icon: "array-numeric",
+      bg: {
+        color: "yellow",
+        opacity: 500,
+      },
+    },
+  },
+  {
+    name: "swapaxes", //CONTROLLARE SE VA BENE DOPO AVER VISTO QUELLA DI NUMPY
+    uri: "numpy.ndarray.swapaxes",
+    code: "from numpy.ndarray import swapaxes",
+    arguments: [
+      {
+        name: "self",
+        type: "numpy.ndarray",
+        isPort: true,
+      },
+    ],
+    returnType: "numpy.ndarray",
     style: {
       icon: "array-numeric",
       bg: {
@@ -88,7 +230,118 @@ export const library: LibraryBlock[] = [
         optional: true,
       },
     ],
-    returnType: "ndarray",
+    returnType: "numpy.ndarray",
+    style: {
+      icon: "array-numeric",
+      bg: {
+        color: "yellow",
+        opacity: 500,
+      },
+    },
+  },
+  {
+    name: "flatten",
+    uri: "numpy.ndarray.flatten",
+    code: "from numpy.ndarray import flatten",
+    arguments: [
+      {
+        name: "self",
+        type: "numpy.ndarray",
+        isPort: true,
+      },
+      {
+        name: "order",
+        type: ["C", "F", "A", "K"],
+        defaultValue: "C",
+        optional: true,
+      },
+    ],
+    returnType: "numpy.ndarray",
+    style: {
+      icon: "array-numeric",
+      bg: {
+        color: "yellow",
+        opacity: 500,
+      },
+    },
+  },
+  {
+    name: "partition",
+    uri: "numpy.ndarray.partition",
+    code: "from numpy.ndarray import partition",
+    arguments: [
+      {
+        name: "self",
+        type: "numpy.ndarray",
+        isPort: true,
+      },
+      {
+        name: "kth",
+        type: ["python.int", "python.int_array"],
+        defaultValue: null,
+      },
+      {
+        name: "axis",
+        type: "python.int",
+        defaultValue: null,
+      },
+      {
+        name: "kind",
+        type: [
+          "introselect",
+          "floatroselect",
+          "intargroselect",
+          "floatargroselect",
+        ],
+        defaultValue: "introselect",
+        optional: true,
+      },
+      {
+        name: "order",
+        type: ["python.string", "python.string_array"],
+        defaultValue: null,
+        optional: true,
+      },
+    ],
+    returnType: "numpy.ndarray",
+    style: {
+      icon: "array-numeric",
+      bg: {
+        color: "yellow",
+        opacity: 500,
+      },
+    },
+  },
+  {
+    name: "sort",
+    uri: "numpy.ndarray.sort",
+    code: "from numpy.ndarray import sort",
+    arguments: [
+      {
+        name: "self",
+        type: "numpy.ndarray",
+        isPort: true,
+      },
+      {
+        name: "axis",
+        type: "python.int",
+        defaultValue: -1,
+        optional: true,
+      },
+      {
+        name: "kind",
+        type: ["quicksort", "mergesort", "heapsort", "stable"],
+        defaultValue: "quicksort",
+        optional: true,
+      },
+      {
+        name: "order",
+        type: ["python.string", "python.string_array"],
+        defaultValue: null,
+        optional: true,
+      },
+    ],
+    returnType: "numpy.ndarray",
     style: {
       icon: "array-numeric",
       bg: {
@@ -102,6 +355,11 @@ export const library: LibraryBlock[] = [
     uri: "numpy.ndarray.tobytes",
     code: "from numpy.ndarray import tobytes",
     arguments: [
+      {
+        name: "self",
+        type: "numpy.ndarray",
+        isPort: true,
+      },
       {
         name: "order",
         type: ["C", "F", "A"],
@@ -123,6 +381,11 @@ export const library: LibraryBlock[] = [
     code: "from numpy.ndarray import ndim",
     arguments: [
       {
+        name: "self",
+        type: "numpy.ndarray",
+        isPort: true,
+      },
+      {
         name: "*args",
         type: "numpy.ndarray",
         defaultValue: null,
@@ -143,6 +406,11 @@ export const library: LibraryBlock[] = [
     code: "from numpy.ndarray import itemset",
     arguments: [
       {
+        name: "self",
+        type: "numpy.ndarray",
+        isPort: true,
+      },
+      {
         name: "*args",
         type: ["python.int", "python.int_array"],
         defaultValue: null,
@@ -154,7 +422,318 @@ export const library: LibraryBlock[] = [
         defaultValue: null,
       },
     ],
-    returnType: "ndarray",
+    returnType: "numpy.ndarray",
+    style: {
+      icon: "array-numeric",
+      bg: {
+        color: "yellow",
+        opacity: 500,
+      },
+    },
+  },
+  {
+    name: "empty_like",
+    uri: "numpy.empty_like",
+    code: "from numpy import empty_like",
+    arguments: [
+      {
+        name: "prototype",
+        type: "numpy.ndarray",
+      },
+      {
+        name: "dtype",
+        type: "any", //TYPE ANY
+        defaultValue: null,
+        optional: true,
+      },
+      {
+        name: "order",
+        type: ["C", "F", "A", "K"],
+        defaultValue: "C",
+        optional: true,
+      },
+      {
+        name: "subok",
+        type: "python.bool",
+        defaultValue: true,
+        optional: true,
+      },
+      {
+        name: "shape",
+        type: ["python.int", "python.int_array"],
+        defaultValue: null,
+        optional: true,
+      },
+    ],
+    returnType: "numpy.ndarray",
+    style: {
+      icon: "array-numeric",
+      bg: {
+        color: "yellow",
+        opacity: 500,
+      },
+    },
+  },
+  {
+    name: "eye",
+    uri: "numpy.eye",
+    code: "from numpy import eye",
+    arguments: [
+      {
+        name: "N",
+        type: "python.int",
+        defaultValue: null,
+      },
+      {
+        name: "M",
+        type: "python.int",
+        defaultValue: null,
+        optional: true,
+      },
+      {
+        name: "k",
+        type: "python.int",
+        defaultValue: 0,
+        optional: true,
+      },
+      {
+        name: "dtype",
+        type: "any", //TYPE ANY
+        defaultValue: null,
+        optional: true,
+      },
+      {
+        name: "order",
+        type: ["C", "F"],
+        defaultValue: "C",
+        optional: true,
+      },
+      {
+        name: "like",
+        type: "numpy.ndarray",
+        defaultValue: null,
+        optional: true,
+      },
+    ],
+    returnType: "numpy.ndarray",
+    style: {
+      icon: "array-numeric",
+      bg: {
+        color: "yellow",
+        opacity: 500,
+      },
+    },
+  },
+  {
+    name: "ones_like",
+    uri: "numpy.ones_",
+    code: "from numpy import ones_",
+    arguments: [
+      {
+        name: "a",
+        type: "numpy.ndarray",
+        defaultValue: null,
+      },
+      {
+        name: "dtype",
+        type: "any", //TYPE ANY
+        defaultValue: null,
+        optional: true,
+      },
+      {
+        name: "order",
+        type: ["C", "F", "A", "K"],
+        defaultValue: "C",
+        optional: true,
+      },
+      {
+        name: "subok",
+        type: "python.bool",
+        defaultValue: true,
+        optional: true,
+      },
+      {
+        name: "shape",
+        type: ["python.int", "python.int_array"],
+        defaultValue: null,
+        optional: true,
+      },
+    ],
+    returnType: "numpy.ndarray",
+    style: {
+      icon: "array-numeric",
+      bg: {
+        color: "yellow",
+        opacity: 500,
+      },
+    },
+  },
+  {
+    name: "identity",
+    uri: "numpy.identity",
+    code: "from numpy import identity",
+    arguments: [
+      {
+        name: "n",
+        type: "python.int",
+        defaultValue: null,
+      },
+      {
+        name: "M",
+        type: "python.int",
+        defaultValue: null,
+        optional: true,
+      },
+      {
+        name: "dtype",
+        type: "any", //TYPE ANY
+        defaultValue: null,
+        optional: true,
+      },
+      {
+        name: "like",
+        type: "numpy.ndarray",
+        defaultValue: null,
+        optional: true,
+      },
+    ],
+    returnType: "numpy.ndarray",
+    style: {
+      icon: "array-numeric",
+      bg: {
+        color: "yellow",
+        opacity: 500,
+      },
+    },
+  },
+  {
+    name: "zeros_like",
+    uri: "numpy.zeros_like",
+    code: "from numpy import zeros_like",
+    arguments: [
+      {
+        name: "a",
+        type: "numpy.ndarray",
+        defaultValue: null,
+      },
+      {
+        name: "dtype",
+        type: "any", //TYPE ANY
+        defaultValue: null,
+        optional: true,
+      },
+      {
+        name: "order",
+        type: ["C", "F", "A", "K"],
+        defaultValue: "C",
+        optional: true,
+      },
+      {
+        name: "subok",
+        type: "python.bool",
+        defaultValue: true,
+        optional: true,
+      },
+      {
+        name: "shape",
+        type: ["python.int", "python.int_array"],
+        defaultValue: null,
+        optional: true,
+      },
+    ],
+    returnType: "numpy.ndarray",
+    style: {
+      icon: "array-numeric",
+      bg: {
+        color: "yellow",
+        opacity: 500,
+      },
+    },
+  },
+  {
+    name: "full",
+    uri: "numpy.full",
+    code: "from numpy import full",
+    arguments: [
+      {
+        name: "shape",
+        type: ["python.int", "python.int_array"],
+        defaultValue: null,
+      },
+      {
+        name: "fill_value",
+        type: "numpy.ndarray",
+        defaultValue: null,
+      },
+      {
+        name: "dtype",
+        type: "any", //TYPE ANY
+        defaultValue: null,
+        optional: true,
+      },
+      {
+        name: "order",
+        type: ["C", "F"],
+        defaultValue: "C",
+        optional: true,
+      },
+      {
+        name: "like",
+        type: "numpy.ndarray",
+        defaultValue: null,
+        optional: true,
+      },
+    ],
+    returnType: "numpy.ndarray",
+    style: {
+      icon: "array-numeric",
+      bg: {
+        color: "yellow",
+        opacity: 500,
+      },
+    },
+  },
+  {
+    name: "full_like",
+    uri: "numpy.full_like",
+    code: "from numpy import full_like",
+    arguments: [
+      {
+        name: "a",
+        type: "numpy.ndarray",
+        defaultValue: null,
+      },
+      {
+        name: "fill_value",
+        type: "numpy.ndarray",
+        defaultValue: null,
+      },
+      {
+        name: "dtype",
+        type: "any", //TYPE ANY
+        defaultValue: null,
+        optional: true,
+      },
+      {
+        name: "order",
+        type: ["C", "F", "A", "K"],
+        defaultValue: "C",
+        optional: true,
+      },
+      {
+        name: "subok",
+        type: "python.bool",
+        defaultValue: true,
+        optional: true,
+      },
+      {
+        name: "shape",
+        type: ["python.int", "python.int_array"],
+        defaultValue: true,
+        optional: true,
+      },
+    ],
+    returnType: "numpy.ndarray",
     style: {
       icon: "array-numeric",
       bg: {
