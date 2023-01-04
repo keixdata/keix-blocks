@@ -650,7 +650,7 @@ export const library = [
             { name: "skipfooter", type: "python.int", defaultValue: 0 },
             { name: "nrows", type: "python.int", defaultValue: null },
             { name: "na_values", type: ["python.string"], defaultValue: null },
-            { name: "keep_defaultValue_na", type: "python.bool", defaultValue: true },
+            { name: "keep_default_na", type: "python.bool", defaultValue: true },
             { name: "na_filter", type: "python.bool", defaultValue: true },
             { name: "verbose", type: "python.bool", defaultValue: false },
             { name: "skip_blank_lines", type: "python.bool", defaultValue: true },
