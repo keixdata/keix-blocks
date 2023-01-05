@@ -114,7 +114,11 @@ export const library = [
             { name: "x", type: "_empty", defaultValue: "_empty" },
             { name: "bins", type: "python.int", defaultValue: null },
             { name: "right", type: "python.bool", defaultValue: true },
-            { name: "labels", type: ["pandas.array", "bool"], defaultValue: null },
+            {
+                name: "labels",
+                type: ["pandas.array", "python.bool"],
+                defaultValue: null,
+            },
             { name: "retbins", type: "python.bool", defaultValue: false },
             { name: "precision", type: "python.int", defaultValue: 3 },
             { name: "include_lowest", type: "python.bool", defaultValue: false },
@@ -384,7 +388,7 @@ export const library = [
             { name: "copy", type: "python.bool", defaultValue: true },
             {
                 name: "indicator",
-                type: ["bool", "python.string"],
+                type: ["python.bool", "python.string"],
                 defaultValue: false,
             },
             { name: "validate", type: "python.string", defaultValue: null },
@@ -656,7 +660,7 @@ export const library = [
             { name: "skip_blank_lines", type: "python.bool", defaultValue: true },
             {
                 name: "parse_dates",
-                type: ["bool", "python.int_array", "python.string_array"],
+                type: ["python.bool", "python.int_array", "python.string_array"],
                 defaultValue: false,
             },
             {
@@ -686,7 +690,8 @@ export const library = [
             { name: "warn_bad_lines", type: "python.bool", defaultValue: null },
             {
                 name: "on_bad_lines",
-                type: ["error", "warn", "skip"],
+                type: "python.string",
+                //  ["error", "warn", "skip"],
                 defaultValue: "error",
             },
             {
@@ -748,7 +753,7 @@ export const library = [
             { name: "keep_default_na", type: "python.bool", defaultValue: true },
             { name: "na_filter", type: "python.bool", defaultValue: true },
             { name: "verbose", type: "python.bool", defaultValue: false },
-            { name: "parse_dates", type: ["bool"], defaultValue: false },
+            { name: "parse_dates", type: ["python.bool"], defaultValue: false },
             { name: "date_parser", type: "_empty", defaultValue: null },
             { name: "thousands", type: "python.string", defaultValue: null },
             { name: "decimal", type: "python.string", defaultValue: "." },
@@ -948,7 +953,7 @@ export const library = [
             { name: "convert_axes", type: "python.bool", defaultValue: null },
             {
                 name: "convert_dates",
-                type: ["bool", "python.string_array"],
+                type: ["python.bool", "python.string_array"],
                 defaultValue: true,
             },
             { name: "keep_default_dates", type: "python.bool", defaultValue: true },
@@ -1283,7 +1288,7 @@ export const library = [
             { name: "skip_blank_lines", type: "python.bool", defaultValue: true },
             {
                 name: "parse_dates",
-                type: ["bool", "python.int_array", "python.string_array"],
+                type: ["python.bool", "python.int_array", "python.string_array"],
                 defaultValue: false,
             },
             {
@@ -1317,7 +1322,8 @@ export const library = [
             { name: "warn_bad_lines", type: "python.bool", defaultValue: true },
             {
                 name: "on_bad_lines",
-                type: ["error", "warn", "skip"],
+                type: "python.string",
+                // type: ["error", "warn", "skip"],
                 defaultValue: true,
             },
             { name: "delim_whitespace", type: "python.bool", defaultValue: false },
@@ -1356,7 +1362,7 @@ export const library = [
         arguments: [
             {
                 name: "as_json",
-                type: ["python.string", "bool"],
+                type: ["python.string", "python.bool"],
                 defaultValue: false,
             },
         ],

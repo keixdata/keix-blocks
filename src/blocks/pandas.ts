@@ -116,7 +116,11 @@ export const library: LibraryBlock[] = [
       { name: "x", type: "_empty", defaultValue: "_empty" }, //TYPE ARRAY LIKE
       { name: "bins", type: "python.int", defaultValue: null },
       { name: "right", type: "python.bool", defaultValue: true },
-      { name: "labels", type: ["pandas.array", "bool"], defaultValue: null }, //TYPE ARRAY | FALSE
+      {
+        name: "labels",
+        type: ["pandas.array", "python.bool"],
+        defaultValue: null,
+      }, //TYPE ARRAY | FALSE
       { name: "retbins", type: "python.bool", defaultValue: false },
       { name: "precision", type: "python.int", defaultValue: 3 },
       { name: "include_lowest", type: "python.bool", defaultValue: false },
@@ -386,7 +390,7 @@ export const library: LibraryBlock[] = [
       { name: "copy", type: "python.bool", defaultValue: true },
       {
         name: "indicator",
-        type: ["bool", "python.string"],
+        type: ["python.bool", "python.string"],
         defaultValue: false,
       },
       { name: "validate", type: "python.string", defaultValue: null },
@@ -658,7 +662,7 @@ export const library: LibraryBlock[] = [
       { name: "skip_blank_lines", type: "python.bool", defaultValue: true },
       {
         name: "parse_dates",
-        type: ["bool", "python.int_array", "python.string_array"], //TYPE LIST OF DICT
+        type: ["python.bool", "python.int_array", "python.string_array"], //TYPE LIST OF DICT
         defaultValue: false,
       },
       {
@@ -688,7 +692,8 @@ export const library: LibraryBlock[] = [
       { name: "warn_bad_lines", type: "python.bool", defaultValue: null },
       {
         name: "on_bad_lines",
-        type: ["error", "warn", "skip"],
+        type: "python.string",
+        //  ["error", "warn", "skip"],
         defaultValue: "error",
       },
       {
@@ -750,7 +755,7 @@ export const library: LibraryBlock[] = [
       { name: "keep_default_na", type: "python.bool", defaultValue: true },
       { name: "na_filter", type: "python.bool", defaultValue: true },
       { name: "verbose", type: "python.bool", defaultValue: false },
-      { name: "parse_dates", type: ["bool"], defaultValue: false }, //TYPE LIST-LIKE, DICT
+      { name: "parse_dates", type: ["python.bool"], defaultValue: false }, //TYPE LIST-LIKE, DICT
       { name: "date_parser", type: "_empty", defaultValue: null }, //TYPE FUNCTION
       { name: "thousands", type: "python.string", defaultValue: null },
       { name: "decimal", type: "python.string", defaultValue: "." },
@@ -950,7 +955,7 @@ export const library: LibraryBlock[] = [
       { name: "convert_axes", type: "python.bool", defaultValue: null },
       {
         name: "convert_dates",
-        type: ["bool", "python.string_array"],
+        type: ["python.bool", "python.string_array"],
         defaultValue: true,
       },
       { name: "keep_default_dates", type: "python.bool", defaultValue: true },
@@ -1285,7 +1290,7 @@ export const library: LibraryBlock[] = [
       { name: "skip_blank_lines", type: "python.bool", defaultValue: true },
       {
         name: "parse_dates",
-        type: ["bool", "python.int_array", "python.string_array"], //TYPE list of lists or dict
+        type: ["python.bool", "python.int_array", "python.string_array"], //TYPE list of lists or dict
         defaultValue: false,
       },
       {
@@ -1319,7 +1324,9 @@ export const library: LibraryBlock[] = [
       { name: "warn_bad_lines", type: "python.bool", defaultValue: true },
       {
         name: "on_bad_lines",
-        type: ["error", "warn", "skip"],
+
+        type: "python.string",
+        // type: ["error", "warn", "skip"],
         defaultValue: true,
       },
       { name: "delim_whitespace", type: "python.bool", defaultValue: false },
@@ -1358,7 +1365,7 @@ export const library: LibraryBlock[] = [
     arguments: [
       {
         name: "as_json",
-        type: ["python.string", "bool"],
+        type: ["python.string", "python.bool"],
         defaultValue: false,
       },
     ],

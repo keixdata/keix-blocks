@@ -2,13 +2,22 @@
   "name": "@keix/blocks",
   "version": "0.0.10",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc --watch",
+    "watch": "tsc --watch",
+    "server": "ws --directory dist/ --port 3030 --static.extensions js",
+    "dev": "concurrently 'npm run watch' 'npm run server'"
   },
   "main": "dist/module.js",
   "typings": "dist/module.js",
   "devDependencies": {
     "@keix/workflow-types": "^1.0.4",
     "@types/react": "^18.0.15",
+    "serve": "^14.1.2",
     "typescript": "^4.7.4"
+  },
+  "dependencies": {
+    "concurrently": "^7.6.0",
+    "http-server": "^14.1.1",
+    "local-web-server": "^5.2.1"
   }
 }
