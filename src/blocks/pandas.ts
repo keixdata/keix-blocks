@@ -612,6 +612,30 @@ export const library: LibraryBlock[] = [
     code: "from pandas import read_clipboard",
   },
   {
+    name: "read_xml",
+    style: {
+      bg: { color: "red", opacity: 500 },
+      icon: "maximize",
+    },
+    uri: "pandas.read_xml",
+    returnType: "pandas.dataframe",
+    code: "from pandas import read_xml",
+    arguments: [
+      {
+        name: "path_or_buffer",
+        label: "in",
+        type: "python.string_io",
+        isPort: true,
+        defaultValue: null,
+      },
+      {
+        name: "xpath",
+        type: "python.string",
+        defaultValue: null,
+      },
+    ],
+  },
+  {
     name: "read_csv",
     style: {
       bg: { color: "red", opacity: 500 },
@@ -621,7 +645,9 @@ export const library: LibraryBlock[] = [
     arguments: [
       {
         name: "filepath_or_buffer",
-        type: "python.string",
+        label: "in",
+        type: "python.string_io",
+        isPort: true,
         defaultValue: null,
       },
       { name: "sep", type: "python.string", defaultValue: null },
@@ -948,7 +974,13 @@ export const library: LibraryBlock[] = [
     },
     uri: "pandas.read_json",
     arguments: [
-      { name: "path_or_buf", type: "python.string", defaultValue: null },
+      {
+        name: "path_or_buf",
+        label: "in",
+        isPort: true,
+        type: "python.string_io",
+        defaultValue: null,
+      },
       { name: "orient", type: "python.string", defaultValue: null },
       { name: "typ", type: ["frame", "series"], defaultValue: "frame" },
       { name: "dtype", type: "_empty", defaultValue: null }, //TYPE DTYPE
