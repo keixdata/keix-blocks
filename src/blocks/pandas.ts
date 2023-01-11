@@ -633,6 +633,11 @@ export const library: LibraryBlock[] = [
         type: "python.string",
         defaultValue: null,
       },
+      {
+        name: "parser",
+        type: "python.string",
+        defaultValue: "etree",
+      },
     ],
   },
   {

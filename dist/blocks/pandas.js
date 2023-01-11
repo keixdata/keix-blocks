@@ -631,6 +631,11 @@ export const library = [
                 type: "python.string",
                 defaultValue: null,
             },
+            {
+                name: "parser",
+                type: "python.string",
+                defaultValue: "etree",
+            },
         ],
     },
     {
