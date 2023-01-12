@@ -61,4 +61,38 @@ export const blocks = [
             },
         },
     },
+    {
+        name: "json_path",
+        uri: "keix.json_path",
+        code: `
+from jsonpath_ng import jsonpath, parse 
+from json import loads, dumps
+def json_path(_in, path):
+    jsonpath_expr = parse(path)
+    jsonpath_res = jsonpath_expr.find(loads(_in))
+    values = list(map(lambda x: x.value, jsonpath_res))
+    return dumps(values)
+    `,
+        requires: ["jsonpath_ng"],
+        returnType: "python.string",
+        arguments: [
+            {
+                name: "in",
+                type: "python.string",
+                isPort: true,
+            },
+            {
+                name: "path",
+                isPort: false,
+                type: "python.string",
+            },
+        ],
+        style: {
+            icon: "export",
+            bg: {
+                color: "blue",
+                opacity: 500,
+            },
+        },
+    },
 ];
