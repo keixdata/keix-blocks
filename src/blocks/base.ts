@@ -64,6 +64,18 @@ export const blocks: LibraryBlock[] = [
     },
   },
   {
+    uri: "string.format",
+    returnType: "python.string",
+    code: ``,
+    functionType: "method",
+    name: "format",
+    style: {
+      icon: "array-floating-point",
+      bg: { color: "red", opacity: 400 },
+    },
+    arguments: [{ name: "self", type: "python.string", isPort: false }],
+  },
+  {
     name: "json_path",
     uri: "keix.json_path",
     code: `
