@@ -95,4 +95,72 @@ def json_path(_in, path):
             },
         },
     },
+    {
+        name: "format",
+        code: "",
+        uri: "string.format",
+        returnType: "python.string",
+        style: {
+            bg: { color: "red", opacity: 500 },
+            icon: "variable",
+        },
+        arguments: [
+            {
+                name: "self",
+                isPort: true,
+                type: "python.string",
+            },
+        ],
+        functionType: "method",
+    },
+    {
+        name: "divide",
+        code: `
+def divide(a, b):
+  return a / b    
+    `,
+        uri: "python.divide",
+        returnType: "python.float",
+        style: {
+            bg: { color: "blue", opacity: 500 },
+            icon: "divide",
+        },
+        arguments: [
+            {
+                name: "a",
+                isPort: true,
+                type: ["python.int", "python.float"],
+            },
+            {
+                name: "b",
+                isPort: true,
+                type: ["python.int", "python.float"],
+            },
+        ],
+    },
+    {
+        name: "multiply",
+        code: `
+def multiply(a, b):
+  return a * b    
+    `,
+        uri: "python.multiply",
+        returnType: "python.float",
+        style: {
+            bg: { color: "blue", opacity: 500 },
+            icon: "small-cross",
+        },
+        arguments: [
+            {
+                name: "a",
+                isPort: true,
+                type: ["python.int", "python.float"],
+            },
+            {
+                name: "b",
+                isPort: true,
+                type: ["python.int", "python.float"],
+            },
+        ],
+    },
 ];

@@ -1740,6 +1740,79 @@ def get_columns(_in, columns):
     ],
     code: "",
   },
+  {
+    name: "dropna",
+    uri: "pandas.dropna",
+    code: "",
+    functionType: "method",
+    returnType: "pandas.dataframe",
+    arguments: [
+      {
+        name: "self",
+        isPort: true,
+        type: "pandas.dataframe",
+      },
+      {
+        name: "axis",
+        type: "python.string",
+        defaultValue: "index",
+        options: ["index", "columns"],
+      },
+      {
+        name: "how",
+        type: "python.string",
+        defaultValue: "any",
+        options: ["any", "all"],
+      },
+      {
+        name: "thresh",
+        type: "python.int",
+        optional: true,
+      },
+      {
+        name: "subset",
+        type: "python.string_array",
+        optional: true,
+      },
+      {
+        name: "inplace",
+        type: "python.bool",
+        optional: false,
+      },
+    ],
+    style: {
+      icon: "remove-column",
+      bg: { color: "red", opacity: 400 },
+    },
+  },
+  {
+    name: "get_value",
+    uri: "pandas.get",
+    returnType: "python.int",
+    code: `
+def get_value(_in, column, index)
+  return _in.at[column, index]        
+    `,
+    arguments: [
+      {
+        name: "in",
+        isPort: true,
+        type: "pandas.dataframe",
+      },
+      {
+        name: "column",
+        type: ["python.string", "python.int"],
+      },
+      {
+        name: "index",
+        type: ["python.int"],
+      },
+    ],
+    style: {
+      icon: "new-grid-item",
+      bg: { color: "red", opacity: 400 },
+    },
+  },
 ];
 
 export default library;
