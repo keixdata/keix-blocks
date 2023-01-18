@@ -175,4 +175,24 @@ def multiply(a, b):
             },
         ],
     },
+    {
+        name: "to_int",
+        code: `
+def to_int(_in):
+  return int(_in)    
+    `,
+        uri: "python.to_int",
+        returnType: "python.int",
+        style: {
+            bg: { color: "blue", opacity: 500 },
+            icon: "numeric",
+        },
+        arguments: [
+            {
+                name: "in",
+                isPort: true,
+                type: "python.string",
+            },
+        ],
+    },
 ];
