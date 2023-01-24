@@ -23,6 +23,16 @@ export const blocks: LibraryBlock[] = [
         isPort: false,
         type: "python.bool",
       },
+      {
+        name: "defaultValue",
+        isPort: false,
+        type: "{{parameters.type}}",
+      },
+      {
+        name: "options",
+        isPort: false,
+        type: "keix.options",
+      },
     ],
     style: {
       icon: "import",
