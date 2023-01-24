@@ -1115,5 +1115,84 @@ export const library: LibraryBlock[] = [
       },
     ],
   },
+  {
+    name: "shape",
+    uri: "numpy.shape",
+    code: "from  numpy import shape",
+    returnType: "python.int_tuple",
+    style: {
+      bg: { color: "yellow", opacity: 500 },
+      icon: "array-numeric",
+    },
+    arguments: [
+      {
+        name: "a",
+        type: ["python.array", "numpy.array"],
+        positional: true,
+      },
+    ],
+  },
+  {
+    name: "reshape",
+    uri: "numpy.reshape",
+    code: "from  numpy import reshape",
+    returnType: "numpy.ndarray",
+    style: {
+      bg: { color: "yellow", opacity: 500 },
+      icon: "array-numeric",
+    },
+    arguments: [
+      {
+        name: "a",
+        type: ["python.array", "numpy.array"],
+        positional: true,
+      },
+      {
+        name: "newshape",
+        type: ["python.int", "python.int_tuple"],
+      },
+      {
+        name: "order",
+        type: "python.string",
+        defaultValue: "C",
+        options: ["C", "F", "A"],
+      },
+    ],
+  },
+  {
+    name: "concatenate",
+    uri: "numpy.concatenate",
+    code: "from numpy import concatenate",
+    returnType: "numpy.ndarray",
+    style: { bg: { color: "yellow", opacity: 500 }, icon: "array-numeric" },
+    arguments: [
+      {
+        name: "array_sequence",
+        type: "numpy.ndarray",
+        positional: true,
+      },
+      {
+        name: "axis",
+        type: "python.int",
+        defaultValue: 0,
+      },
+      {
+        name: "out",
+        type: "numpy.ndarray",
+        optional: true,
+      },
+      {
+        name: "dtype",
+        type: "python.string",
+        optional: true,
+      },
+      {
+        name: "casting",
+        type: "python.string",
+        defaultValue: "same_kind",
+        options: ["no", "equiv", "safe", "same_kind", "unsafe"],
+      },
+    ],
+  },
 ];
 export default library;
