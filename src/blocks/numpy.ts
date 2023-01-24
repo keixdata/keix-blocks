@@ -858,7 +858,7 @@ export const library: LibraryBlock[] = [
     name: "sin",
     uri: "numpy.sin",
     code: "from numpy import sin",
-    returnType: "ndarray",
+    returnType: "numpy.ndarray",
     style: {
       bg: { color: "yellow", opacity: 500 },
       icon: "array-numeric",
@@ -866,7 +866,7 @@ export const library: LibraryBlock[] = [
     arguments: [
       {
         name: "input",
-        type: ["python.int", "numpy.int"],
+        type: "python.int",
         description: "Angle, in radians",
       },
       /* {
@@ -956,7 +956,7 @@ export const library: LibraryBlock[] = [
     name: "tan",
     uri: "numpy.tan",
     code: "from numpy import tan",
-    returnType: "ndarray",
+    returnType: "numpy.ndarray",
     style: {
       bg: { color: "yellow", opacity: 500 },
       icon: "array-numeric",
@@ -964,7 +964,7 @@ export const library: LibraryBlock[] = [
     arguments: [
       {
         name: "input",
-        type: ["python.int", "numpy.int"],
+        type: "python.int",
         description: "Angle, in radians",
       },
       /* {
@@ -1005,7 +1005,7 @@ export const library: LibraryBlock[] = [
     name: "arctan",
     uri: "numpy.arctan",
     code: "from numpy import arctan",
-    returnType: "ndarray",
+    returnType: "numpy.ndarray",
     style: {
       bg: { color: "yellow", opacity: 500 },
       icon: "array-numeric",
@@ -1013,7 +1013,7 @@ export const library: LibraryBlock[] = [
     arguments: [
       {
         name: "input",
-        type: ["python.int", "numpy.int"],
+        type: "python.int",
         description: "Angle, in radians",
       },
       /* {
