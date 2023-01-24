@@ -807,7 +807,7 @@ export const library: LibraryBlock[] = [
     name: "full",
     uri: "numpy.full",
     code: "from numpy import full",
-    returnType: "ndarray",
+    returnType: "numpy.ndarray",
     style: {
       bg: { color: "yellow", opacity: 500 },
       icon: "array-numeric",
@@ -826,11 +826,10 @@ export const library: LibraryBlock[] = [
         name: "dtype",
         type: ["numpy.type", "python.type"],
         optional: true,
-        defaultValue: null,
       },
       {
         name: "order",
-        type: "char",
+        type: "python.string",
         optional: true,
         defaultValue: "C",
         options: [
@@ -850,7 +849,6 @@ export const library: LibraryBlock[] = [
         name: "array_like",
         type: ["python.array", "numpy.array"],
         optional: true,
-        defaultValue: "none",
       },
     ],
   },
@@ -956,15 +954,16 @@ export const library: LibraryBlock[] = [
     name: "tan",
     uri: "numpy.tan",
     code: "from numpy import tan",
-    returnType: "numpy.ndarray",
+    returnType: "python.float", //"numpy.ndarray",
     style: {
       bg: { color: "yellow", opacity: 500 },
       icon: "array-numeric",
     },
     arguments: [
       {
-        name: "input",
-        type: "python.int",
+        name: "x",
+        positional: true,
+        type: ["python.float", "python.float_array", "numpy.ndarray"],
         description: "Angle, in radians",
       },
       /* {
