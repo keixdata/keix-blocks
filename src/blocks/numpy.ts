@@ -807,7 +807,7 @@ export const library: LibraryBlock[] = [
     name: "full",
     uri: "numpy.full",
     code: "from numpy import full",
-    returnType: "ndarray",
+    returnType: "numpy.ndarray",
     style: {
       bg: { color: "yellow", opacity: 500 },
       icon: "array-numeric",
@@ -826,11 +826,10 @@ export const library: LibraryBlock[] = [
         name: "dtype",
         type: ["numpy.type", "python.type"],
         optional: true,
-        defaultValue: null,
       },
       {
         name: "order",
-        type: "char",
+        type: "python.string",
         optional: true,
         defaultValue: "C",
         options: [
@@ -850,7 +849,6 @@ export const library: LibraryBlock[] = [
         name: "array_like",
         type: ["python.array", "numpy.array"],
         optional: true,
-        defaultValue: "none",
       },
     ],
   },
@@ -865,8 +863,9 @@ export const library: LibraryBlock[] = [
     },
     arguments: [
       {
-        name: "input",
-        type: "python.int",
+        name: "x",
+        positional: true,
+        type: ["python.float", "python.float_array", "numpy.ndarray"],
         description: "Angle, in radians",
       },
       /* {
@@ -900,24 +899,25 @@ export const library: LibraryBlock[] = [
         type: ["numpy.type", "python.type"],
         optional: true,
         defaultValue: null,
-      },
+      },*/
     ],
   },
   {
     name: "cos",
     uri: "numpy.cos",
     code: "from numpy import cos",
-    returnType: "ndarray",
+    returnType: "numpy.ndarray",
     style: {
       bg: { color: "yellow", opacity: 500 },
       icon: "array-numeric",
     },
     arguments: [
       {
-        name: "input",
-        type: ["python.int", "numpy.int"],
+        name: "x",
+        positional: true,
+        type: ["python.float", "python.float_array", "numpy.ndarray"],
         description: "Angle, in radians",
-      },
+      } /*
       {
         name: "out",
         type: "string",
@@ -949,22 +949,23 @@ export const library: LibraryBlock[] = [
         type: ["numpy.type", "python.type"],
         optional: true,
         defaultValue: null,
-      }, */
+      }, */,
     ],
   },
   {
     name: "tan",
     uri: "numpy.tan",
     code: "from numpy import tan",
-    returnType: "numpy.ndarray",
+    returnType: "python.float", //"numpy.ndarray",
     style: {
       bg: { color: "yellow", opacity: 500 },
       icon: "array-numeric",
     },
     arguments: [
       {
-        name: "input",
-        type: "python.int",
+        name: "x",
+        positional: true,
+        type: ["python.float", "python.float_array", "numpy.ndarray"],
         description: "Angle, in radians",
       },
       /* {
@@ -1012,8 +1013,9 @@ export const library: LibraryBlock[] = [
     },
     arguments: [
       {
-        name: "input",
-        type: "python.int",
+        name: "x",
+        positional: true,
+        type: ["python.float", "python.float_array", "numpy.ndarray"],
         description: "Angle, in radians",
       },
       /* {
@@ -1048,6 +1050,69 @@ export const library: LibraryBlock[] = [
         optional: true,
         defaultValue: null,
       }, */
+    ],
+  },
+  {
+    name: "sqrt",
+    uri: "numpy.emath.sqrt",
+    code: "from numpy import emath.sqrt",
+    returnType: "python.float",
+    style: {
+      bg: { color: "yellow", opacity: 500 },
+      icon: "array-numeric",
+    },
+    arguments: [
+      {
+        name: "x",
+        type: "python.float",
+        positional: true,
+      },
+    ],
+  },
+  {
+    name: "logn",
+    uri: "numpy.emath.logn",
+    code: "from numpy import emath.logn",
+    returnType: "python.float",
+    style: {
+      bg: { color: "yellow", opacity: 500 },
+      icon: "array-numeric",
+    },
+    arguments: [
+      {
+        name: "n",
+        type: "python.int",
+        positional: true,
+        description: "log base",
+      },
+      {
+        name: "x",
+        type: "python.float",
+        positional: true,
+      },
+    ],
+  },
+  {
+    name: "power",
+    uri: "numpy.emath.power",
+    code: "from numpy import emath.power",
+    returnType: "python.float",
+    style: {
+      bg: { color: "yellow", opacity: 500 },
+      icon: "array-numeric",
+    },
+    arguments: [
+      {
+        name: "x",
+        type: "python.float",
+        positional: true,
+      },
+      {
+        name: "p",
+        type: "python.int",
+        positional: true,
+        description: "The power to which x is raised.",
+      },
     ],
   },
 ];
