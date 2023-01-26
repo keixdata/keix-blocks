@@ -800,5 +800,568 @@ export const library = [
             },
         },
     },
+    {
+        name: "full",
+        uri: "numpy.full",
+        code: "from numpy import full",
+        returnType: "numpy.ndarray",
+        style: {
+            bg: { color: "yellow", opacity: 500 },
+            icon: "array-numeric",
+        },
+        arguments: [
+            {
+                name: "shape",
+                type: ["python.int", "python.int_array"],
+                description: "Shape of the new array, e.g., (2, 3) or 2",
+            },
+            {
+                name: "fill_value",
+                type: ["python.int", "python.int_array"],
+                isPort: true,
+            },
+            {
+                name: "dtype",
+                type: ["numpy.type", "python.type"],
+                optional: true,
+            },
+            {
+                name: "order",
+                type: "python.string",
+                optional: true,
+                defaultValue: "C",
+                options: [
+                    {
+                        label: "Whether to store multidimensional data in C order in memory",
+                        value: "C",
+                    },
+                    {
+                        label: "Whether to store multidimensional data in Fortran-contiguous order in memory",
+                        value: "F",
+                    },
+                ],
+            },
+            {
+                name: "array_like",
+                type: ["python.float_array", "numpy.array"],
+                optional: true,
+            },
+        ],
+    },
+    {
+        name: "sin",
+        uri: "numpy.sin",
+        code: "from numpy import sin",
+        returnType: "numpy.ndarray",
+        style: {
+            bg: { color: "yellow", opacity: 500 },
+            icon: "array-numeric",
+        },
+        arguments: [
+            {
+                name: "x",
+                positional: true,
+                type: ["python.float", "python.float_array", "numpy.ndarray"],
+                description: "Angle, in radians",
+                isPort: true,
+            },
+            /* {
+              name: "out",
+              type: "string",
+              optional: true,
+              defaultValue: "None",
+              options: ["ndarray", "None"],
+            },
+            {
+              name: "where",
+              type: "python.bool",
+              optional: true,
+              description:
+                "At locations where the condition is True, the out array will be set to the ufunc result. Elsewhere, the out array will retain its original value.",
+            },
+            {
+              name: "casting",
+              type: "pyghon.string",
+              optional: true,
+              defaultValue: "same_kind",
+            },
+            {
+              name: "order",
+              type: "char",
+              optional: true,
+              defaultValue: "K",
+            },
+            {
+              name: "dtype",
+              type: ["numpy.type", "python.type"],
+              optional: true,
+              defaultValue: null,
+            },*/
+        ],
+    },
+    {
+        name: "cos",
+        uri: "numpy.cos",
+        code: "from numpy import cos",
+        returnType: "numpy.ndarray",
+        style: {
+            bg: { color: "yellow", opacity: 500 },
+            icon: "array-numeric",
+        },
+        arguments: [
+            {
+                name: "x",
+                positional: true,
+                type: ["python.float", "python.float_array", "numpy.ndarray"],
+                description: "Angle, in radians",
+                isPort: true,
+            } /*
+            {
+              name: "out",
+              type: "string",
+              optional: true,
+              defaultValue: "None",
+              options: ["ndarray", "None"],
+            },
+            {
+              name: "where",
+              type: "python.bool",
+              optional: true,
+              description:
+                "At locations where the condition is True, the out array will be set to the ufunc result. Elsewhere, the out array will retain its original value.",
+            },
+            {
+              name: "casting",
+              type: "pyghon.string",
+              optional: true,
+              defaultValue: "same_kind",
+            },
+            {
+              name: "order",
+              type: "char",
+              optional: true,
+              defaultValue: "K",
+            },
+            {
+              name: "dtype",
+              type: ["numpy.type", "python.type"],
+              optional: true,
+              defaultValue: null,
+            }, */,
+        ],
+    },
+    {
+        name: "tan",
+        uri: "numpy.tan",
+        code: "from numpy import tan",
+        returnType: "python.float",
+        style: {
+            bg: { color: "yellow", opacity: 500 },
+            icon: "array-numeric",
+        },
+        arguments: [
+            {
+                name: "x",
+                positional: true,
+                type: ["python.float", "python.float_array", "numpy.ndarray"],
+                description: "Angle, in radians",
+                isPort: true,
+            },
+            /* {
+              name: "out",
+              type: "string",
+              optional: true,
+              defaultValue: "None",
+              options: ["ndarray", "None"],
+            },
+            {
+              name: "where",
+              type: "python.bool",
+              optional: true,
+              description:
+                "At locations where the condition is True, the out array will be set to the ufunc result. Elsewhere, the out array will retain its original value.",
+            },
+            {
+              name: "casting",
+              type: "pyghon.string",
+              optional: true,
+              defaultValue: "same_kind",
+            },
+            {
+              name: "order",
+              type: "char",
+              optional: true,
+              defaultValue: "K",
+            },
+            {
+              name: "dtype",
+              type: ["numpy.type", "python.type"],
+              optional: true,
+              defaultValue: null,
+            }, */
+        ],
+    },
+    {
+        name: "arctan",
+        uri: "numpy.arctan",
+        code: "from numpy import arctan",
+        returnType: "numpy.ndarray",
+        style: {
+            bg: { color: "yellow", opacity: 500 },
+            icon: "array-numeric",
+        },
+        arguments: [
+            {
+                name: "x",
+                positional: true,
+                type: ["python.float", "python.float_array", "numpy.ndarray"],
+                description: "Angle, in radians",
+                isPort: true,
+            },
+            /* {
+              name: "out",
+              type: "string",
+              optional: true,
+              defaultValue: "None",
+              options: ["ndarray", "None"],
+            },
+            {
+              name: "where",
+              type: "python.bool",
+              optional: true,
+              description:
+                "At locations where the condition is True, the out array will be set to the ufunc result. Elsewhere, the out array will retain its original value.",
+            },
+            {
+              name: "casting",
+              type: "pyghon.string",
+              optional: true,
+              defaultValue: "same_kind",
+            },
+            {
+              name: "order",
+              type: "char",
+              optional: true,
+              defaultValue: "K",
+            },
+            {
+              name: "dtype",
+              type: ["numpy.type", "python.type"],
+              optional: true,
+              defaultValue: null,
+            }, */
+        ],
+    },
+    {
+        name: "sqrt",
+        uri: "numpy.emath.sqrt",
+        code: "from numpy import emath.sqrt",
+        returnType: "python.float",
+        style: {
+            bg: { color: "yellow", opacity: 500 },
+            icon: "array-numeric",
+        },
+        arguments: [
+            {
+                name: "x",
+                type: "python.float",
+                positional: true,
+                isPort: true,
+            },
+        ],
+    },
+    {
+        name: "logn",
+        uri: "numpy.emath.logn",
+        code: "from numpy import emath.logn",
+        returnType: "python.float",
+        style: {
+            bg: { color: "yellow", opacity: 500 },
+            icon: "array-numeric",
+        },
+        arguments: [
+            {
+                name: "n",
+                type: "python.int",
+                positional: true,
+                description: "log base",
+                isPort: true,
+            },
+            {
+                name: "x",
+                type: "python.float",
+                positional: true,
+            },
+        ],
+    },
+    {
+        name: "power",
+        uri: "numpy.emath.power",
+        code: "from numpy import emath.power",
+        returnType: "python.float",
+        style: {
+            bg: { color: "yellow", opacity: 500 },
+            icon: "array-numeric",
+        },
+        arguments: [
+            {
+                name: "x",
+                type: "python.float",
+                positional: true,
+                isPort: true,
+            },
+            {
+                name: "p",
+                type: "python.int",
+                positional: true,
+                description: "The power to which x is raised.",
+            },
+        ],
+    },
+    {
+        name: "shape",
+        uri: "numpy.shape",
+        code: "from  numpy import shape",
+        returnType: "python.int_tuple",
+        style: {
+            bg: { color: "yellow", opacity: 500 },
+            icon: "array-numeric",
+        },
+        arguments: [
+            {
+                name: "a",
+                type: ["python.float_array", "numpy.array"],
+                positional: true,
+                isPort: true,
+            },
+        ],
+    },
+    {
+        name: "reshape",
+        uri: "numpy.reshape",
+        code: "from  numpy import reshape",
+        returnType: "numpy.ndarray",
+        style: {
+            bg: { color: "yellow", opacity: 500 },
+            icon: "array-numeric",
+        },
+        arguments: [
+            {
+                name: "a",
+                type: ["python.float_array", "numpy.array"],
+                positional: true,
+                isPort: true,
+            },
+            {
+                name: "newshape",
+                type: ["python.int", "python.int_tuple"],
+            },
+            {
+                name: "order",
+                type: "python.string",
+                defaultValue: "C",
+                options: ["C", "F", "A"],
+            },
+        ],
+    },
+    {
+        name: "concatenate",
+        uri: "numpy.concatenate",
+        code: "from numpy import concatenate",
+        returnType: "numpy.ndarray",
+        style: { bg: { color: "yellow", opacity: 500 }, icon: "array-numeric" },
+        arguments: [
+            {
+                name: "array_sequence",
+                type: "numpy.ndarray",
+                positional: true,
+                isPort: true,
+            },
+            {
+                name: "axis",
+                type: "python.int",
+                defaultValue: 0,
+            },
+            {
+                name: "out",
+                type: "numpy.ndarray",
+                optional: true,
+            },
+            {
+                name: "dtype",
+                type: "python.string",
+                optional: true,
+            },
+            {
+                name: "casting",
+                type: "python.string",
+                defaultValue: "same_kind",
+                options: ["no", "equiv", "safe", "same_kind", "unsafe"],
+            },
+        ],
+    },
+    {
+        name: "dot",
+        uri: "numpy.dot",
+        code: "from numpy import dot",
+        style: { bg: { color: "yellow", opacity: 500 }, icon: "array-numeric" },
+        returnType: "python.int",
+        arguments: [
+            {
+                name: "a",
+                type: ["python.float_array", "numpy.ndarray"],
+                positional: true,
+                isPort: true,
+            },
+            {
+                name: "b",
+                type: ["python.float_array", "numpy.ndarray"],
+                positional: true,
+                isPort: true,
+            },
+        ],
+    },
+    {
+        name: "inner",
+        uri: "numpy.inner",
+        code: "from numpy import inner",
+        style: { bg: { color: "yellow", opacity: 500 }, icon: "array-numeric" },
+        returnType: "python.int",
+        arguments: [
+            {
+                name: "a",
+                type: ["python.float_array", "numpy.ndarray"],
+                positional: true,
+                isPort: true,
+            },
+            {
+                name: "b",
+                type: ["python.float_array", "numpy.ndarray"],
+                positional: true,
+                isPort: true,
+            },
+        ],
+    },
+    {
+        name: "outer",
+        uri: "numpy.outer",
+        code: "from numpy import outer",
+        style: { bg: { color: "yellow", opacity: 500 }, icon: "array-numeric" },
+        returnType: "numpy.ndarray",
+        arguments: [
+            {
+                name: "a",
+                type: ["python.float_array", "numpy.ndarray"],
+                positional: true,
+                isPort: true,
+            },
+            {
+                name: "b",
+                type: ["python.float_array", "numpy.ndarray"],
+                positional: true,
+                isPort: true,
+            },
+        ],
+    },
+    {
+        name: "matmul",
+        uri: "numpy.matmul",
+        code: "from numpy import matmul",
+        style: { bg: { color: "yellow", opacity: 500 }, icon: "array-numeric" },
+        returnType: "python.int",
+        arguments: [
+            {
+                name: "x1",
+                type: ["python.float_array", "numpy.ndarray"],
+                positional: true,
+                isPort: true,
+            },
+            {
+                name: "x2",
+                type: ["python.float_array", "numpy.ndarray"],
+                positional: true,
+                isPort: true,
+            },
+            {
+                name: "dtype",
+                type: "python.string",
+                optional: true,
+            },
+            {
+                name: "casting",
+                type: "python.string",
+                defaultValue: "same_kind",
+                options: ["no", "equiv", "safe", "same_kind", "unsafe"],
+            },
+            {
+                name: "order",
+                type: "python.string",
+                defaultValue: "K",
+                options: ["C", "F", "A", "K"],
+            },
+        ],
+    },
+    {
+        name: "tensordot",
+        uri: "numpy.tensordot",
+        code: "from numpy import tensordot",
+        style: { bg: { color: "yellow", opacity: 500 }, icon: "array-numeric" },
+        returnType: "numpy.ndarray",
+        arguments: [
+            {
+                name: "a",
+                type: ["python.float_array", "numpy.ndarray"],
+                positional: true,
+                isPort: true,
+            },
+            {
+                name: "b",
+                type: ["python.float_array", "numpy.ndarray"],
+                positional: true,
+                isPort: true,
+            },
+            {
+                name: "axes",
+                type: ["python.int", "python.float_array", "numpy.ndarray"],
+                defaultValue: 0,
+            },
+        ],
+    },
+    {
+        name: "kron",
+        uri: "numpy.kron",
+        code: "from numpy import kron",
+        style: { bg: { color: "yellow", opacity: 500 }, icon: "array-numeric" },
+        returnType: "numpy.ndarray",
+        arguments: [
+            {
+                name: "a",
+                type: ["python.float_array", "numpy.ndarray"],
+                isPort: true,
+            },
+            {
+                name: "b",
+                type: ["python.float_array", "numpy.ndarray"],
+                isPort: true,
+            },
+        ],
+    },
+    /* {
+      name: "greater",
+      uri: "numpy.greater",
+      code: "from numpy import greater",
+      style: { bg: { color: "yellow", opacity: 500 }, icon: "array-numeric" },
+      returnType: "numpy.ndarray",
+      arguments: [
+        {
+          name: "x1",                                                               //TBA
+          type: ["python.float_array", "numpy.ndarray"],
+        },
+        {
+          name: "x2",
+          type: ["python.float_array", "numpy.ndarray"],
+        }
+      ]
+    } */
 ];
 export default library;

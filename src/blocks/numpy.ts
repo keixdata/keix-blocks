@@ -821,6 +821,7 @@ export const library: LibraryBlock[] = [
       {
         name: "fill_value",
         type: ["python.int", "python.int_array"],
+        isPort: true,
       },
       {
         name: "dtype",
@@ -847,7 +848,7 @@ export const library: LibraryBlock[] = [
       },
       {
         name: "array_like",
-        type: ["python.array", "numpy.array"],
+        type: ["python.float_array", "numpy.array"],
         optional: true,
       },
     ],
@@ -867,6 +868,7 @@ export const library: LibraryBlock[] = [
         positional: true,
         type: ["python.float", "python.float_array", "numpy.ndarray"],
         description: "Angle, in radians",
+        isPort: true,
       },
       /* {
         name: "out",
@@ -917,6 +919,7 @@ export const library: LibraryBlock[] = [
         positional: true,
         type: ["python.float", "python.float_array", "numpy.ndarray"],
         description: "Angle, in radians",
+        isPort: true,
       } /*
       {
         name: "out",
@@ -967,6 +970,7 @@ export const library: LibraryBlock[] = [
         positional: true,
         type: ["python.float", "python.float_array", "numpy.ndarray"],
         description: "Angle, in radians",
+        isPort: true,
       },
       /* {
         name: "out",
@@ -1017,6 +1021,7 @@ export const library: LibraryBlock[] = [
         positional: true,
         type: ["python.float", "python.float_array", "numpy.ndarray"],
         description: "Angle, in radians",
+        isPort: true,
       },
       /* {
         name: "out",
@@ -1066,6 +1071,7 @@ export const library: LibraryBlock[] = [
         name: "x",
         type: "python.float",
         positional: true,
+        isPort: true,
       },
     ],
   },
@@ -1084,6 +1090,7 @@ export const library: LibraryBlock[] = [
         type: "python.int",
         positional: true,
         description: "log base",
+        isPort: true,
       },
       {
         name: "x",
@@ -1106,6 +1113,7 @@ export const library: LibraryBlock[] = [
         name: "x",
         type: "python.float",
         positional: true,
+        isPort: true,
       },
       {
         name: "p",
@@ -1127,8 +1135,9 @@ export const library: LibraryBlock[] = [
     arguments: [
       {
         name: "a",
-        type: ["python.array", "numpy.array"],
+        type: ["python.float_array", "numpy.array"],
         positional: true,
+        isPort: true,
       },
     ],
   },
@@ -1144,8 +1153,9 @@ export const library: LibraryBlock[] = [
     arguments: [
       {
         name: "a",
-        type: ["python.array", "numpy.array"],
+        type: ["python.float_array", "numpy.array"],
         positional: true,
+        isPort: true,
       },
       {
         name: "newshape",
@@ -1170,6 +1180,7 @@ export const library: LibraryBlock[] = [
         name: "array_sequence",
         type: "numpy.ndarray",
         positional: true,
+        isPort: true,
       },
       {
         name: "axis",
@@ -1194,5 +1205,173 @@ export const library: LibraryBlock[] = [
       },
     ],
   },
+  {
+    name: "dot",
+    uri: "numpy.dot",
+    code: "from numpy import dot",
+    style: { bg: { color: "yellow", opacity: 500 }, icon: "array-numeric" },
+    returnType: "python.int",
+
+    arguments: [
+      {
+        name: "a",
+        type: ["python.float_array", "numpy.ndarray"],
+        positional: true,
+        isPort: true,
+      },
+      {
+        name: "b",
+        type: ["python.float_array", "numpy.ndarray"],
+        positional: true,
+        isPort: true,
+      },
+    ],
+  },
+  {
+    name: "inner",
+    uri: "numpy.inner",
+    code: "from numpy import inner",
+    style: { bg: { color: "yellow", opacity: 500 }, icon: "array-numeric" },
+    returnType: "python.int",
+
+    arguments: [
+      {
+        name: "a",
+        type: ["python.float_array", "numpy.ndarray"],
+        positional: true,
+        isPort: true,
+      },
+      {
+        name: "b",
+        type: ["python.float_array", "numpy.ndarray"],
+        positional: true,
+        isPort: true,
+      },
+    ],
+  },
+  {
+    name: "outer",
+    uri: "numpy.outer",
+    code: "from numpy import outer",
+    style: { bg: { color: "yellow", opacity: 500 }, icon: "array-numeric" },
+    returnType: "numpy.ndarray",
+
+    arguments: [
+      {
+        name: "a",
+        type: ["python.float_array", "numpy.ndarray"],
+        positional: true,
+        isPort: true,
+      },
+      {
+        name: "b",
+        type: ["python.float_array", "numpy.ndarray"],
+        positional: true,
+        isPort: true,
+      },
+    ],
+  },
+  {
+    name: "matmul",
+    uri: "numpy.matmul",
+    code: "from numpy import matmul",
+    style: { bg: { color: "yellow", opacity: 500 }, icon: "array-numeric" },
+    returnType: "python.int",
+
+    arguments: [
+      {
+        name: "x1",
+        type: ["python.float_array", "numpy.ndarray"],
+        positional: true,
+        isPort: true,
+      },
+      {
+        name: "x2",
+        type: ["python.float_array", "numpy.ndarray"],
+        positional: true,
+        isPort: true,
+      },
+      {
+        name: "dtype",
+        type: "python.string",
+        optional: true,
+      },
+      {
+        name: "casting",
+        type: "python.string",
+        defaultValue: "same_kind",
+        options: ["no", "equiv", "safe", "same_kind", "unsafe"],
+      },
+      {
+        name: "order",
+        type: "python.string",
+        defaultValue: "K",
+        options: ["C", "F", "A", "K"],
+      },
+    ],
+  },
+  {
+    name: "tensordot",
+    uri: "numpy.tensordot",
+    code: "from numpy import tensordot",
+    style: { bg: { color: "yellow", opacity: 500 }, icon: "array-numeric" },
+    returnType: "numpy.ndarray",
+
+    arguments: [
+      {
+        name: "a",
+        type: ["python.float_array", "numpy.ndarray"],
+        positional: true,
+        isPort: true,
+      },
+      {
+        name: "b",
+        type: ["python.float_array", "numpy.ndarray"],
+        positional: true,
+        isPort: true,
+      },
+      {
+        name: "axes",
+        type: ["python.int", "python.float_array", "numpy.ndarray"],
+        defaultValue: 0,
+      },
+    ],
+  },
+  {
+    name: "kron",
+    uri: "numpy.kron",
+    code: "from numpy import kron",
+    style: { bg: { color: "yellow", opacity: 500 }, icon: "array-numeric" },
+    returnType: "numpy.ndarray",
+    arguments: [
+      {
+        name: "a",
+        type: ["python.float_array", "numpy.ndarray"],
+        isPort: true,
+      },
+      {
+        name: "b",
+        type: ["python.float_array", "numpy.ndarray"],
+        isPort: true,
+      },
+    ],
+  },
+  /* {
+    name: "greater",
+    uri: "numpy.greater",
+    code: "from numpy import greater",
+    style: { bg: { color: "yellow", opacity: 500 }, icon: "array-numeric" },
+    returnType: "numpy.ndarray",
+    arguments: [
+      {
+        name: "x1",                                                               //TBA
+        type: ["python.float_array", "numpy.ndarray"],
+      },
+      {
+        name: "x2",
+        type: ["python.float_array", "numpy.ndarray"],
+      }
+    ]
+  } */
 ];
 export default library;
