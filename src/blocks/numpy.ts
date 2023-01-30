@@ -803,5 +803,26 @@ export const library: LibraryBlock[] = [
       },
     },
   },
+  {
+    name: "shape",
+    uri: "numpy.shape",
+    functionType: "attribute",
+    code: "",
+    arguments: [
+      {
+        name: "self",
+        isPort: true,
+        type: "numpy.ndarray",
+      },
+    ],
+    returnType: "python.int_array",
+    style: {
+      icon: "array-numeric",
+      bg: {
+        color: "yellow",
+        opacity: 500,
+      },
+    },
+  },
 ];
 export default library;

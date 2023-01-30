@@ -322,6 +322,27 @@ export const library = [
         code: "",
     },
     {
+        name: "shape",
+        uri: "pandas.shape",
+        functionType: "attribute",
+        code: "",
+        arguments: [
+            {
+                name: "self",
+                isPort: true,
+                type: "pandas.dataframe",
+            },
+        ],
+        returnType: "python.int_array",
+        style: {
+            icon: "array-numeric",
+            bg: {
+                color: "yellow",
+                opacity: 500,
+            },
+        },
+    },
+    {
         name: "melt",
         style: {
             bg: { color: "red", opacity: 500 },
