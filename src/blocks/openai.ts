@@ -28,13 +28,41 @@ export const library: LibraryBlock[] = [
     },
   })), */
   {
-    name: "openai.Completion.create",
-    uri: `openai.Completion.create`,
+    name: "openai_completion",
+    uri: `openai.completion`,
+    async: true,
     code: `
-import openai
-openai.api_key = "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"`,
-    requires: ["openai"],
+from pyodide.http import pyfetch
+from json import dumps
+
+async def openai_completion(api_key, model, prompt, temperature, max_tokens, top_p, frequency_penalty, presence_penalty, raw_response):
+    endpoint = 'https://api.openai.com/v1/completions'
+    headers = {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer {}'.format(api_key)  
+    }
+    response = await pyfetch(endpoint, headers=headers, method='POST', body=dumps({
+      'model': model,
+      'prompt': prompt,
+      'temperature': temperature,
+      'max_tokens': max_tokens,
+      'top_p': top_p,
+      'frequency_penalty': frequency_penalty,
+      'presence_penalty': presence_penalty
+    }))
+
+    respose_body = await response.json()
+    if raw_response:
+      return respose_body
+    else:
+      return respose_body.get('choices')[0].get('text')
+
+`,
     arguments: [
+      {
+        name: "api_key",
+        type: "python.string",
+      },
       {
         name: "model",
         type: "python.string",
@@ -49,6 +77,11 @@ openai.api_key = "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"`,
       {
         name: "prompt",
         type: "python.string",
+      },
+      {
+        name: "raw_response",
+        type: "python.bool",
+        defaultValue: false,
       },
       {
         name: "temperature",
@@ -77,11 +110,11 @@ openai.api_key = "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"`,
       },
     ],
 
-    returnType: "python.dictionary",
+    returnType: "python.string",
     style: {
-      icon: "array-numeric",
+      icon: "predictive-analysis",
       bg: {
-        color: "red",
+        color: "orange",
         opacity: 500,
       },
     },
