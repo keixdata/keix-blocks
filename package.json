@@ -1,8 +1,8 @@
 {
   "name": "@keix/blocks",
-  "version": "0.0.10",
+  "version": "0.1.0",
   "scripts": {
-    "build": "tsc --watch",
+    "build": "tsc",
     "watch": "tsc --watch",
     "server": "ws --directory dist/ --port 3030 --static.extensions js",
     "dev": "concurrently 'npm run watch' 'npm run server'"
