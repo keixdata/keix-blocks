@@ -32,7 +32,7 @@ export const library: LibraryBlock[] = [
     uri: `openai.Completion.create`,
     code: `
 import openai
-openai.api_key = "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"`,
+openai.api_key = ""`,
     requires: ["openai"],
     arguments: [
       {
