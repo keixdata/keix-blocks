@@ -821,5 +821,249 @@ export const library = [
             },
         },
     },
+    {
+        name: "full",
+        uri: "numpy.full",
+        code: "from numpy import full",
+        returnType: "numpy.ndarray",
+        style: {
+            bg: { color: "yellow", opacity: 500 },
+            icon: "array-numeric",
+        },
+        arguments: [
+            {
+                name: "shape",
+                type: ["python.int", "python.int_array"],
+                description: "Shape of the new array, e.g., (2, 3) or 2",
+            },
+            {
+                name: "fill_value",
+                type: ["python.int", "python.int_array"],
+            },
+            {
+                name: "dtype",
+                type: ["numpy.type", "python.type"],
+                optional: true,
+            },
+            {
+                name: "order",
+                type: "python.string",
+                optional: true,
+                defaultValue: "C",
+                options: [
+                    {
+                        label: "Whether to store multidimensional data in C order in memory",
+                        value: "C",
+                    },
+                    {
+                        label: "Whether to store multidimensional data in Fortran-contiguous order in memory",
+                        value: "F",
+                    },
+                ],
+            },
+            {
+                name: "array_like",
+                type: ["python.array", "numpy.array"],
+                optional: true,
+            },
+        ],
+    },
+    {
+        name: "sin",
+        uri: "numpy.sin",
+        code: "from numpy import sin",
+        returnType: "numpy.ndarray",
+        style: {
+            bg: { color: "yellow", opacity: 500 },
+            icon: "array-numeric",
+        },
+        arguments: [
+            {
+                name: "input",
+                type: "python.int",
+                description: "Angle, in radians",
+            },
+            /* {
+              name: "out",
+              type: "string",
+              optional: true,
+              defaultValue: "None",
+              options: ["ndarray", "None"],
+            },
+            {
+              name: "where",
+              type: "python.bool",
+              optional: true,
+              description:
+                "At locations where the condition is True, the out array will be set to the ufunc result. Elsewhere, the out array will retain its original value.",
+            },
+            {
+              name: "casting",
+              type: "pyghon.string",
+              optional: true,
+              defaultValue: "same_kind",
+            },
+            {
+              name: "order",
+              type: "char",
+              optional: true,
+              defaultValue: "K",
+            },
+            {
+              name: "dtype",
+              type: ["numpy.type", "python.type"],
+              optional: true,
+              defaultValue: null,
+            },
+          ],
+        },
+        {
+          name: "cos",
+          uri: "numpy.cos",
+          code: "from numpy import cos",
+          returnType: "ndarray",
+          style: {
+            bg: { color: "yellow", opacity: 500 },
+            icon: "array-numeric",
+          },
+          arguments: [
+            {
+              name: "input",
+              type: ["python.int", "numpy.int"],
+              description: "Angle, in radians",
+            },
+            {
+              name: "out",
+              type: "string",
+              optional: true,
+              defaultValue: "None",
+              options: ["ndarray", "None"],
+            },
+            {
+              name: "where",
+              type: "python.bool",
+              optional: true,
+              description:
+                "At locations where the condition is True, the out array will be set to the ufunc result. Elsewhere, the out array will retain its original value.",
+            },
+            {
+              name: "casting",
+              type: "pyghon.string",
+              optional: true,
+              defaultValue: "same_kind",
+            },
+            {
+              name: "order",
+              type: "char",
+              optional: true,
+              defaultValue: "K",
+            },
+            {
+              name: "dtype",
+              type: ["numpy.type", "python.type"],
+              optional: true,
+              defaultValue: null,
+            }, */
+        ],
+    },
+    {
+        name: "tan",
+        uri: "numpy.tan",
+        code: "from numpy import tan",
+        returnType: "python.float",
+        style: {
+            bg: { color: "yellow", opacity: 500 },
+            icon: "array-numeric",
+        },
+        arguments: [
+            {
+                name: "x",
+                positional: true,
+                type: ["python.float", "python.float_array", "numpy.ndarray"],
+                description: "Angle, in radians",
+            },
+            /* {
+              name: "out",
+              type: "string",
+              optional: true,
+              defaultValue: "None",
+              options: ["ndarray", "None"],
+            },
+            {
+              name: "where",
+              type: "python.bool",
+              optional: true,
+              description:
+                "At locations where the condition is True, the out array will be set to the ufunc result. Elsewhere, the out array will retain its original value.",
+            },
+            {
+              name: "casting",
+              type: "pyghon.string",
+              optional: true,
+              defaultValue: "same_kind",
+            },
+            {
+              name: "order",
+              type: "char",
+              optional: true,
+              defaultValue: "K",
+            },
+            {
+              name: "dtype",
+              type: ["numpy.type", "python.type"],
+              optional: true,
+              defaultValue: null,
+            }, */
+        ],
+    },
+    {
+        name: "arctan",
+        uri: "numpy.arctan",
+        code: "from numpy import arctan",
+        returnType: "numpy.ndarray",
+        style: {
+            bg: { color: "yellow", opacity: 500 },
+            icon: "array-numeric",
+        },
+        arguments: [
+            {
+                name: "input",
+                type: "python.int",
+                description: "Angle, in radians",
+            },
+            /* {
+              name: "out",
+              type: "string",
+              optional: true,
+              defaultValue: "None",
+              options: ["ndarray", "None"],
+            },
+            {
+              name: "where",
+              type: "python.bool",
+              optional: true,
+              description:
+                "At locations where the condition is True, the out array will be set to the ufunc result. Elsewhere, the out array will retain its original value.",
+            },
+            {
+              name: "casting",
+              type: "pyghon.string",
+              optional: true,
+              defaultValue: "same_kind",
+            },
+            {
+              name: "order",
+              type: "char",
+              optional: true,
+              defaultValue: "K",
+            },
+            {
+              name: "dtype",
+              type: ["numpy.type", "python.type"],
+              optional: true,
+              defaultValue: null,
+            }, */
+        ],
+    },
 ];
 export default library;

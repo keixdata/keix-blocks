@@ -2,15 +2,6 @@ import { LibraryBlock } from "@keix/workflow-types";
 
 export const library: LibraryBlock[] = [
   {
-    name: "load_dump",
-    style: {
-      bg: { color: "red", opacity: 500 },
-      icon: "database",
-    },
-    uri: "keix.load_dump",
-    code: 'print("Hello")',
-  },
-  {
     name: "array",
     style: {
       bg: { color: "red", opacity: 500 },
