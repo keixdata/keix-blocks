@@ -1705,6 +1705,66 @@ def get_columns(_in, columns):
     `,
   },
   {
+    name: "get_column",
+    style: {
+      bg: { color: "red", opacity: 500 },
+      icon: "column-layout",
+    },
+    uri: "pandas.get_column",
+    returnType: "pandas.series",
+    arguments: [
+      {
+        name: "in",
+        type: "pandas.dataframe",
+        isPort: true,
+      },
+      { name: "columns", type: "python.string" },
+    ],
+    code: `
+def get_column(_in, columns):
+  return _in[columns]    
+    `,
+  },
+  {
+    name: "get_column_options",
+    style: {
+      bg: { color: "red", opacity: 500 },
+      icon: "column-layout",
+    },
+    uri: "pandas.get_column_options",
+    returnType: "keix.options",
+    arguments: [
+      {
+        name: "in",
+        type: "pandas.dataframe",
+        isPort: true,
+      },
+      { name: "column", type: "python.string" },
+    ],
+    code: `
+def get_column_options(_in, column):
+  return _in[column].unique().tolist()
+    `,
+  },
+  {
+    name: "unique",
+    style: {
+      bg: { color: "red", opacity: 500 },
+      icon: "remove-column-left",
+    },
+    uri: "pandas.unique",
+    returnType: "numpy.ndarray",
+    arguments: [
+      {
+        name: "values",
+        label: "in",
+        type: "pandas.series",
+        isPort: true,
+      },
+    ],
+    code: `from pandas import unique`,
+  },
+  {
     name: "reset_index",
     style: {
       bg: { color: "red", opacity: 500 },

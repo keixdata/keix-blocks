@@ -1,14 +1,5 @@
 export const library = [
     {
-        name: "load_dump",
-        style: {
-            bg: { color: "red", opacity: 500 },
-            icon: "database",
-        },
-        uri: "keix.load_dump",
-        code: 'print("Hello")',
-    },
-    {
         name: "array",
         style: {
             bg: { color: "red", opacity: 500 },
@@ -320,6 +311,27 @@ export const library = [
             { name: "dropna", type: "python.bool", defaultValue: true },
         ],
         code: "",
+    },
+    {
+        name: "unstack",
+        uri: "pandas.unstack",
+        code: "",
+        functionType: "method",
+        arguments: [
+            {
+                name: "self",
+                type: "pandas.dataframe",
+                isPort: true,
+            },
+        ],
+        returnType: "pandas.dataframe",
+        style: {
+            icon: "array-numeric",
+            bg: {
+                color: "red",
+                opacity: 500,
+            },
+        },
     },
     {
         name: "shape",
@@ -1686,6 +1698,66 @@ export const library = [
 def get_columns(_in, columns):
   return _in[columns]    
     `,
+    },
+    {
+        name: "get_column",
+        style: {
+            bg: { color: "red", opacity: 500 },
+            icon: "column-layout",
+        },
+        uri: "pandas.get_column",
+        returnType: "pandas.series",
+        arguments: [
+            {
+                name: "in",
+                type: "pandas.dataframe",
+                isPort: true,
+            },
+            { name: "columns", type: "python.string" },
+        ],
+        code: `
+def get_column(_in, columns):
+  return _in[columns]    
+    `,
+    },
+    {
+        name: "get_column_options",
+        style: {
+            bg: { color: "red", opacity: 500 },
+            icon: "column-layout",
+        },
+        uri: "pandas.get_column_options",
+        returnType: "keix.options",
+        arguments: [
+            {
+                name: "in",
+                type: "pandas.dataframe",
+                isPort: true,
+            },
+            { name: "column", type: "python.string" },
+        ],
+        code: `
+def get_column_options(_in, column):
+  return _in[column].unique().tolist()
+    `,
+    },
+    {
+        name: "unique",
+        style: {
+            bg: { color: "red", opacity: 500 },
+            icon: "remove-column-left",
+        },
+        uri: "pandas.unique",
+        returnType: "numpy.ndarray",
+        arguments: [
+            {
+                name: "values",
+                label: "in",
+                type: "pandas.series",
+                isPort: true,
+            },
+        ],
+        code: `from pandas import unique`,
     },
     {
         name: "reset_index",
