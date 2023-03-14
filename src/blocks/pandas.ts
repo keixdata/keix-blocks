@@ -315,6 +315,27 @@ export const library: LibraryBlock[] = [
     code: "",
   },
   {
+    name: "unstack",
+    uri: "pandas.unstack",
+    code: "",
+    functionType: "method",
+    arguments: [
+      {
+        name: "self",
+        type: "pandas.dataframe",
+        isPort: true,
+      },
+    ],
+    returnType: "pandas.dataframe",
+    style: {
+      icon: "array-numeric",
+      bg: {
+        color: "red",
+        opacity: 500,
+      },
+    },
+  },
+  {
     name: "shape",
     uri: "pandas.shape",
     functionType: "attribute",
